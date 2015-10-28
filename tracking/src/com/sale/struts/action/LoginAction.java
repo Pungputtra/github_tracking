@@ -63,7 +63,7 @@ public class LoginAction extends Action {
 			forwardText = "nologin";
 			request.setAttribute("alert", "Username or Password Incorrect");
 		}
-		/////
+		/////Putsing Jas
 		return mapping.findForward(forwardText);
 	}
 }
