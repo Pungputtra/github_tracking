@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="tracking"
+  id="myeclipse.1443256083699"
+  context-root="/tracking"
+  j2ee-spec="5.0"
+  archive="tracking.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
