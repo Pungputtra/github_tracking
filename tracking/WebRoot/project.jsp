@@ -71,28 +71,8 @@
   					
   					<div class="col-md-2"><label>Customer Name :</label>
   						
-  						<html:select styleClass="form-control" property="cusname"/>
-  						
-  						<html:select styleClass="form-control" property="proid">
-								<html:option value="">กรุณาเลือกโปรเจก</html:option>
-								<% if(request.getAttribute("projectlist") != null)
-								{
-									List projectlist = (List)request.getAttribute("projectlist");
-									Iterator iter = projectlist.iterator();
-										
-									while(iter.hasNext())
-									{
-										ProjectForm pjform = (ProjectForm) iter.next();
-								%>
-								<html:option value="<%=pjform.getProid()%>"><%=pjform.getProname()%></html:option>
-								<%
-									}
-								}%>
-							</html:select>
-  						
-  					</div>
-  					
-  					
+  						<html:select styleClass="form-control" property="cusname"/>					
+				</div>
 				
 				</div><br/>
 		
