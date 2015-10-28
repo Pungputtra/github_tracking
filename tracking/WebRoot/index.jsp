@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,8 +25,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 	
   </head>
-  
+  <%@ include file="menu.jsp" %>
   <body>
-    This is my JSP page. <br> 
+     <br>
+     <div class="col-xs-6 col-md-1">
+    <a href="#" class="thumbnail">
+      <img src="img/Logo Edit.png"width="100px" height="50px"></img>
+    
+    </a>
+  </div>
+     
+		<ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="#">HOME</a></li>
+			<li role="presentation"><a href="#">CUSTOMER</a></li>
+			<li role="presentation"><a href="#">EMPLOYEE</a></li>
+			<li role="presentation"><a href="#">PRIECT</a></li>
+			<li role="presentation"><a href="#">DETAIL</a></li>
+			<li role="presentation"><a href="#">STATUS</a></li>
+		</ul>
+		
+
+  
+					
+		
+		
   </body>
 </html>
