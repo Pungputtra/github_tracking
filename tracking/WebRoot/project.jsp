@@ -101,7 +101,7 @@
 				<br>
 				<div class="row">
 					<div class="col-md-5 col-md-offset-1">
-						<html:submit styleClass="btn btn-default"  value="Search" property="search">Search</html:submit>
+						<html:submit styleClass="btn btn-default"  value="Get Project" property="search">Search</html:submit>
 						<html:submit styleClass="btn btn-default" value="INSERT" property="submit">INSERT</html:submit>
 						<html:submit styleClass="btn btn-default"  value="UPDATE" property="update">UPDATE</html:submit>
 						<html:submit styleClass="btn btn-default"  value="DELETE" property="delete">DELETE</html:submit>
