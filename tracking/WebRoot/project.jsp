@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
  
@@ -69,10 +69,27 @@
 				
 				<div class="row">
   					
-  					<div class="col-md-2"><label>Custromer Name :</label>
+  					<div class="col-md-2"><label>Customer Name :</label>
   						
+  						<html:select styleClass="form-control" property="cusname"/>
   						
-  						<html:text styleClass="form-control" property="cusname"/>
+  						<html:select styleClass="form-control" property="proid">
+								<html:option value="">กรุณาเลือกโปรเจก</html:option>
+								<% if(request.getAttribute("projectlist") != null)
+								{
+									List projectlist = (List)request.getAttribute("projectlist");
+									Iterator iter = projectlist.iterator();
+										
+									while(iter.hasNext())
+									{
+										ProjectForm pjform = (ProjectForm) iter.next();
+								%>
+								<html:option value="<%=pjform.getProid()%>"><%=pjform.getProname()%></html:option>
+								<%
+									}
+								}%>
+							</html:select>
+  						
   					</div>
   					
   					

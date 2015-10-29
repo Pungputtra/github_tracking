@@ -27,6 +27,8 @@ public class DetailForm extends ActionForm {
 	/** cusid property */
 	private String cusid;
 	
+	private String cusname;
+	
 	/** statusid property */
 	private String statusid;
 
@@ -203,6 +205,14 @@ public class DetailForm extends ActionForm {
 
 	public void setShowlist(String showlist) {
 		this.showlist = showlist;
+	}
+
+	public String getCusname() {
+		return cusname;
+	}
+
+	public void setCusname(String cusname) {
+		this.cusname = cusname;
 	}
 
 }
