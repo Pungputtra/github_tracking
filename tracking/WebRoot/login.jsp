@@ -72,6 +72,14 @@
   									String alert =(String) request.getAttribute("alert");
   							%>
   								<p class = "text-danger"><%=alert%></p>
+  								
+  								
+  								<div class="alert alert-danger" role="alert">
+  									<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  									<span class="sr-only">Error:</span>
+  										Username or Password Incorrect
+								</div>
+
   							<% 
   								}
   							 %>

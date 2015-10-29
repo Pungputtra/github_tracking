@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionMapping;
 
 import java.util.*;
 
+import com.sale.struts.data.tblcustomer;
 import com.sale.struts.data.tbldetail;
 import com.sale.struts.data.tblproject;
 import com.sale.struts.form.DetailForm;
@@ -53,55 +54,56 @@ public class DetailAction extends Action {
 			return mapping.findForward("nologin");
 		}
 		
-		String id, cusid, proid, statusid, remark, submit, search, delete, date, showlist, username =null;
+		String id, cusid, cusname, proid, statusid, remark, date, username, 
+		submit, search, delete, showlist = null;
 		
 		id = detailForm.getId();
 		cusid = detailForm.getCusid();
+		cusname = detailForm.getCusname();
 		proid = detailForm.getProid();
 		statusid = detailForm.getStatus();
-		date = detailForm.getDate();
 		remark = detailForm.getRemark();
+		date = detailForm.getDate();
 		
 		username = "natchi";
 		
-		showlist = request.getParameter("showlist");		
 		submit = request.getParameter("submit");
 		search = detailForm.getSearch();
 		delete = request.getParameter("delete");
+		showlist = request.getParameter("showlist");
 		
 		tbldetail tbl = new tbldetail();
 		tblproject tblp = new tblproject();
 		
+		
 		if(submit != "" && submit != null){
 			try {
-				tbl.insert_to_detail(cusid, proid, statusid, remark, date, username);
+				tbl.insert_to_detail(cusid, cusname, proid, statusid, remark, date, username);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			
 			detailForm.setCusid("");
+			detailForm.setCusname("");
 			detailForm.setProid("");
 			detailForm.setStatusid("");
 			detailForm.setRemark("");
-			
+			detailForm.setDate("");
 			
 			
 		}else if(search != "" && search != null){
 			String[] result = new String[5];
-			List projectlist = null;
+			List customerlist = null;
 			try {
-				result = tbl.select_from_detail(id);
-				projectlist = tblp.select_project(cusid);
+				result = tbl.select_from_detail(id, showlist);
+				List projectlist = tblp.select_project(cusid);
 				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			Object projectlist = null;
 			request.setAttribute("projectlist", projectlist);
 			
 			
@@ -111,7 +113,9 @@ public class DetailAction extends Action {
 			
 				
 			
-		}else if(delete != "" && delete != null){
+		}
+		
+		else if(delete != "" && delete != null){
 			try {
 				tbl.delete_from_detail(id);
 			} catch (IOException e) {

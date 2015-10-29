@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.sale.struts.data.DBConnect;
+import com.sale.struts.form.CustomerForm;
+import com.sale.struts.form.ProjectForm;
 
 public class tblcustomer {
 	DBConnect agent = new DBConnect();
@@ -62,29 +67,29 @@ public class tblcustomer {
 	}
 		
 		
-		public void delete_from_customer(String cusid) throws IOException, Exception{
-			conn = agent.getConnectMYSql();
-			String sqlQuery = "delete from customer where cusid = '"+cusid+"'";
+	public void delete_from_customer(String cusid) throws IOException, Exception{
+		conn = agent.getConnectMYSql();
+		String sqlQuery = "delete from customer where cusid = '"+cusid+"'";
 			
-			pStmt = conn.createStatement();
-			pStmt.executeUpdate(sqlQuery);
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlQuery);
 			
-			conn.close();
-			pStmt.close();	
+		conn.close();
+		pStmt.close();	
 			
 	}
 		
 
-		public void update_customer(String cusid, 
-				String companame_en, 
-				String companame_th,
-				String cusname, 
-				String position,
-				String mail,
-				String address,
-				String tel08,
-				String tel02,
-				String fax)throws Exception{
+	public void update_customer(String cusid, 
+			String companame_en, 
+			String companame_th,
+			String cusname, 
+			String position,
+			String mail,
+			String address,
+			String tel08,
+			String tel02,
+			String fax)throws Exception{
 			
 			conn = agent.getConnectMYSql();
 			
@@ -95,6 +100,38 @@ public class tblcustomer {
 			pStmt.close();
 			conn.close();
 			
-		}		
+	}
+	
+	public List select_customer(String cusid){
+		List customerList = new ArrayList();
+		
+		try {
+			
+			conn = agent.getConnectMYSql();
+			
+			String sqlQ = "SELECT * FROM customer ";
+			if(!cusid.equals("")){
+				sqlQ += "where cusid='"+cusid+"'";
+			}
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlQ);
+			
+			while(rs.next()){
+								
+				customerList.add(new CustomerForm(rs.getString("cusid"), rs.getString("cusname")));
+				
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return customerList;
 		
 	}
+
+}

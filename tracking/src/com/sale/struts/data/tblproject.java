@@ -52,11 +52,12 @@ public class tblproject {
 	
 	
 	public void insert_to_project(String proname, 
-			String cusid, String username)throws Exception{
+			String cusid, 
+			String username)throws Exception{
 		
 		conn = agent.getConnectMYSql();
 		
-		String sqlQuery = "insert into project (proname, cusid, username) value('"+proname+"','"+cusid+"','"+username+"')";
+		String sqlQuery = "insert into project(proname, cusid, username) value('"+proname+"','"+cusid+"','"+username+"')";
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlQuery);
 		
@@ -86,35 +87,67 @@ public class tblproject {
 	}
 	
 	
-	
+	public List select_customer(String cusname){
+		List customerlist = new ArrayList();
 		
-		
-		public void delete_from_project(String proid) throws IOException, Exception{
+		try {
+			
 			conn = agent.getConnectMYSql();
-			String sqlQuery = "delete from project where proid = '"+proid+"'";
 			
+			String sqlQ = "SELECT project.proid, project.proname FROM project WHERE project.cusname = '"+cusname+"'";
 			pStmt = conn.createStatement();
-			pStmt.executeUpdate(sqlQuery);
+			rs = pStmt.executeQuery(sqlQ);
 			
-			conn.close();
-			pStmt.close();	
+			while(rs.next()){
+				
+				String proid=null, proname=null;
+				proid = rs.getString("proid");
+				proname = rs.getString("proname");
+				
+				customerlist.add(new ProjectForm(proid, proname));
+				
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return customerlist;
+		
+	}
+	
+	
+	
+	public void delete_from_project(String proid) throws IOException, Exception{
+		conn = agent.getConnectMYSql();
+		String sqlQuery = "delete from project where proid = '"+proid+"'";
+			
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlQuery);
+			
+		conn.close();
+		pStmt.close();	
 			
 	}
 		
 
-		public void update_project(String proid, 
-				String proname, 
-				String cusid)throws Exception{
+	public void update_project(String proid, 
+		String proname, 
+		String cusid)throws Exception{
 			
-			conn = agent.getConnectMYSql();
+		conn = agent.getConnectMYSql();
 			
-			String sqlQuery = "update project set proname = '"+proname+"', cusid = '"+cusid+"' where proid = '"+proid+"'";			
-			pStmt = conn.createStatement();
-			pStmt.executeUpdate(sqlQuery);
+		String sqlQuery = "update project set proname = '"+proname+"', cusid = '"+cusid+"' where proid = '"+proid+"'";			
+		pStmt = conn.createStatement();
+		pStmt.executeUpdate(sqlQuery);
 			
-			pStmt.close();
-			conn.close();
+		pStmt.close();
+		conn.close();
 			
-		}		
+	}		
 
 }

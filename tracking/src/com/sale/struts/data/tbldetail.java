@@ -18,7 +18,7 @@ public class tbldetail {
 	Statement pStmt = null;
 	ResultSet rs = null;
 	
-	public void insert_to_detail(String cusid, 
+	public void insert_to_detail(String cusid, String cusname,
 			String proid,
 			String statusid,
 			String remark,
@@ -27,7 +27,7 @@ public class tbldetail {
 		
 		conn = agent.getConnectMYSql();
 		
-		String sqlQuery = "insert into detail (cusid, proid, statusid, remark, date, username)  value('"+cusid+"', '"+proid+"', '"+statusid+"', '"+remark+"', now(), '"+username+"')";
+		String sqlQuery = "insert into detail (cusid, cusname, proid, statusid, remark, date, username)  value('"+cusid+"', '"+cusname+"', '"+proid+"', '"+statusid+"', '"+remark+"', now(), '"+username+"')";
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlQuery);
 		
@@ -36,18 +36,21 @@ public class tbldetail {
 	}
 	
 	
-	public String[] select_from_detail(String id) throws IOException, Exception{
+	public String[] select_from_detail(String id, String cusname) throws IOException, Exception{
 		conn = agent.getConnectMYSql();
-		String sqlQuery = "select * from detail where id = '"+id+"'";
-		String[] result = new String[5];
+		String sqlQuery = "select id, cusname from detail where id = '"+id+"' and cusname = '"+cusname+"'";
+		String[] result = new String[8];
 		pStmt = conn.createStatement();
 		rs = pStmt.executeQuery(sqlQuery);
 		while(rs.next()){
 			result[0] = rs.getString("id");
 			result[1] = rs.getString("cusid");
-			result[2] = rs.getString("proid");
-			result[3] = rs.getString("statusid");
-			result[4] = rs.getString("remark");
+			result[2] = rs.getString("cusname");
+			result[3] = rs.getString("proid");
+			result[4] = rs.getString("statusid");
+			result[5] = rs.getString("remark");
+			result[6] = rs.getString("date");
+			result[7] = rs.getString("username");
 				
 		}
 		rs.close();
@@ -103,15 +106,16 @@ public class tbldetail {
 	}
 	
 	
-	public void update_detail(String id, 
-			String cusid, 
+	public void update_detail(String cusid, String cusname,
 			String proid,
-			String statusid, 
-			String remark)throws Exception{
+			String statusid,
+			String remark,
+			String date,
+			String username)throws Exception{
 		
 		conn = agent.getConnectMYSql();
 		
-		String sqlQuery = "update detail set id = '"+id+"',cusid = '"+cusid+"', proid = '"+proid+"', statusid = '"+statusid+"', remark = '"+remark+"'";
+		String sqlQuery = "update detail set cusid = '"+cusid+"', cusname = '"+cusname+"', proid = '"+proid+"', statusid = '"+statusid+"', remark = '"+remark+"', date = '"+date+"', username = '"+username+"'";
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlQuery);
 		

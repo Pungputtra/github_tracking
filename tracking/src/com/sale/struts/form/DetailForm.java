@@ -47,9 +47,14 @@ public class DetailForm extends ActionForm {
 	private String proid;
 	
 	
+	private String project;
+
+	
 	private String status;
 	
-	private String project;
+	private String username;
+	
+	
 	
 	
 
@@ -213,6 +218,14 @@ public class DetailForm extends ActionForm {
 
 	public void setCusname(String cusname) {
 		this.cusname = cusname;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

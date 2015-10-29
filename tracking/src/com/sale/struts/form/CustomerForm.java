@@ -56,15 +56,15 @@ public class CustomerForm extends ActionForm {
 	
 	private String delete,update;
 	
+	private String project;
 	
 	private String status;
 	
-	private String project;
-	
 
-	/*
-	 * Generated Methods
-	 */
+	public CustomerForm(String s1, String s2) {
+		this.cusid = s1;
+		this.cusname = s2;
+	}
 
 	/** 
 	 * Method validate
@@ -266,6 +266,14 @@ public class CustomerForm extends ActionForm {
 	public String getUpdate() {
 		return update;
 	}
+	
+	public String getProject() {
+		return project;
+	}
+
+	public void setProject(String project) {
+		this.project = project;
+	}
 
 	public void setUpdate(String update) {
 		this.update = update;
@@ -277,14 +285,6 @@ public class CustomerForm extends ActionForm {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public String getProject() {
-		return project;
-	}
-
-	public void setProject(String project) {
-		this.project = project;
 	}
 	
 }

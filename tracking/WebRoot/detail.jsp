@@ -1,4 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page import="com.sale.struts.form.DetailForm"%>
+<%@ page import="com.sale.struts.form.CustomerForm"%>
 <%@ page import="com.sale.struts.form.ProjectForm"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
@@ -15,9 +17,7 @@
 		
 	</head>
 	
-	
-	<%@ include file="menu.jsp" %>
-  		
+	<%@ include file="menu.jsp"%>
   		
 	<!-- Navs -->	
 		
@@ -37,7 +37,6 @@
   				
   	<!-- End Navs -->
   		
-  		
   		<div class="col-md-9 ">
   		
 		<html:form action="/detail">
@@ -45,15 +44,33 @@
 				<div class="container">
 				
 					<div class="row">
+  						
+  						<div class="col-md-3"><label>Customer Name :</label>
+  							<html:select styleClass="form-control" property="cusname">
   							
-  						<div class="col-md-2"><label>Cusid :</label>
-  							<html:text styleClass="form-control" property="cusid"/>
-  						</div>
-  					
-  						<div class="col-md-4">
+	  							<html:option value=""></html:option>
+									<% if(request.getAttribute("projectlist") != null)
+									{
+										List projectlist = (List)request.getAttribute("projectlist");
+										Iterator iter = projectlist.iterator();
+											
+										while(iter.hasNext())
+										{
+											ProjectForm pjform = (ProjectForm) iter.next();
+									%>
+									<html:option value="<%=pjform.getProid()%>"><%=pjform.getProname()%></html:option>
+									<%
+										}
+									}%>
+								
+							</html:select>
+						</div>
+  						
+  						
+  						<div class="col-md-6">
   							<br/><html:submit styleClass="btn btn-default"  value="Get Project" property="search">Search</html:submit><html:errors property="cusid"/>
   						</div>
-				
+	
 					</div><br/>
 						
 						
@@ -77,8 +94,8 @@
 								}%>
 							</html:select>
 						</div>
-  					
-  					
+						
+						
   						<div class="col-md-3"><label>Status :</label>
   							<html:select styleClass="form-control" property="status">
   								<html:option value="1">โทรครั้งแรก</html:option>
@@ -97,40 +114,44 @@
   						<div class="col-md-6"><label>Remark :</label>
   							<html:text styleClass="form-control" property="remark"/>
   						</div>
+  						
+  						
+  						<div class="col-md-6"> 
+							
+							<br/>
+							<button type="submit" class="btn btn-default" value="INSERT" name="submit">
+							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+							INSERT</button>
+							
+							<button type="delete" class="btn btn-default" value="DELETE" name="delete">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							DELETE</button>
+							
+							<button type="showlist" class="btn btn-default" value="Show List" name="showlist">
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+							SHOWLIST</button>
+						
+						</div>
 				
 					</div><br/>
-							
+				
 				</div>
 					
 					
 					
 				<br>
-				<div class="row">
-					<div class="col-md-5 col-md-offset-2"> 
-						
-						<button type="showlist" class="btn btn-default" value="Show List" name="showlist">
-						<span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>
-						SHOWLIST</button>
-						
-						<button type="submit" class="btn btn-default" value="INSERT" name="submit">
-						<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-						INSERT</button>
-						
-						<button type="delete" class="btn btn-default" value="DELETE" name="delete">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-						DELETE</button>
-						
-					</div>
-				</div><br>
-				
-				
-				<div class="col-md-10">
+				<div class="col-md-12">
 					<table class="table table-bordered">
 		
 						<thead>
-							<tr class="info">
-								<th class="text-center">id</th>
-								<th class="text-center">name</th>
+							<tr>
+								<th class="text-center">ID</th>
+								<th class="text-center">Customer Name</th>
+								<th class="text-center">Project Name</th>
+								<th class="text-center">Status</th>
+								<th class="text-center">Remark</th>
+								<th class="text-center">Date</th>
+								<th class="text-center">Username</th>
 							</tr>
 						</thead>
 						
@@ -159,7 +180,7 @@
 								
 						<tbody>	
 							<tr>
-								<td colspan="2" align="center">not found</td>			
+								<td colspan="12" align="center">not found</td>			
 							</tr>	
 						</tbody>				
 							

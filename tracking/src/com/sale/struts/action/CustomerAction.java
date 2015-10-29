@@ -56,13 +56,11 @@ public class CustomerAction extends Action {
 		submit =null, search=null, delete=null, update=null, status=null;
 		
 		
-		
 			submit = request.getParameter("submit");
-			search = customerForm.getSearch();
-			delete = customerForm.getDelete();
-			update = customerForm.getUpdate();
+			search = request.getParameter("search");
+			delete = request.getParameter("delete");
+			update = request.getParameter("update");
 			
-		///////
 		
 		tblcustomer tbl = new tblcustomer();
 		

@@ -66,10 +66,10 @@ public class EmployeeAction extends Action {
 			mail = employeeForm.getMail();
 			
 		
-			submit = employeeForm.getSubmit();
-			search = employeeForm.getSearch();
-			delete = employeeForm.getDelete();
-			update = employeeForm.getUpdate();
+			submit = request.getParameter("submit");
+			search = request.getParameter("search");
+			delete = request.getParameter("delete");
+			update = request.getParameter("update");
 			
 		} catch (UnsupportedEncodingException e1) {
 			// TODO Auto-generated catch block

@@ -3,8 +3,6 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ page import = "java.util.*" %>
 
-
-
 <html> 
 	<head>
 		<title>JSP for CustomerForm form</title>	
@@ -18,7 +16,6 @@
   
 	<%@ include file="menu.jsp" %>
   		
-	
 	<!-- Navs -->	
 		
 		<br><br>
@@ -52,7 +49,9 @@
   					</div>
   					
   					<div class="col-md-4">
-  						<br/><html:submit styleClass="btn btn-default"  value="Search" property="search">Search</html:submit><html:errors property="cusid"/>
+  						<br/><button type ="search" class="btn btn-default"  value="Search" name="search">
+  						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+  						Search</button>
   					</div>
 				
 				</div><br/>
@@ -86,7 +85,6 @@
 				
 				<div class="row">
   					
-  					
   					<div class="col-md-8"><label>Email :</label>
   						<html:text styleClass="form-control" property="mail"/><html:errors property="mail"/>
   					</div>
@@ -117,49 +115,29 @@
   						<html:text styleClass="form-control" property="fax"/><html:errors property="fax"/>
   					</div>			
 				
-				</div><br/>
-				
-				
-				
+				</div><br/>	
 						
 			</div>
 			
 
 
 			<br>
-			<div class="col-md-1 col-md-offset-5"> 
-				<button type ="submit" class="btn btn-default" value="INSERT" name="submit">
-				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-				INSERT</button>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-5"> 
+					<button type ="submit" class="btn btn-default" value="INSERT" name="submit">
+					<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+					INSERT</button>
+					
+					<button type ="update" class="btn btn-default" value="UPDATE" name="update">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					UPDATE</button>  
+					
+					<button type ="delete" class="btn btn-default"  value="DELETE" name="delete">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					DELETE</button>	
+				</div>
 			</div>
 			
-			<div class="col-md-1">
-				<html:submit styleClass="btn btn-default"  value="UPDATE" property="update">UPDATE</html:submit>  
-			</div>
-			
-			
-			
-			<div class="col-md-1">
-			
-				<html:submit styleClass="btn btn-default"  value="DELETE" property="delete">DELETE</html:submit>
-				
-				
-			</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-				
 		</html:form>
   				
   		</div>

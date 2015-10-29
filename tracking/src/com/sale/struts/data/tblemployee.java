@@ -34,14 +34,14 @@ public class tblemployee {
 	
 	public String[] select_from_employee(String username, String password) throws IOException, Exception{
 		conn = agent.getConnectMYSql();
-		String sqlQuery = "select username, password, empname, position, address, tel, mail from employee where username = '"+username+"' and password = '"+password+"'";
+		String sqlQuery = "select username, empname, position, address, tel, mail from employee where username = '"+username+"' and password = '"+password+"'";
 		
 		String[] result = new String[7];
 		pStmt = conn.createStatement();
 		rs = pStmt.executeQuery(sqlQuery);
 		while(rs.next()){
 			result[0] = rs.getString("username");
-			result[1] = rs.getString("password");	
+			
 			result[2] = rs.getString("empname");
 			result[3] = rs.getString("position");
 			result[4] = rs.getString("address");

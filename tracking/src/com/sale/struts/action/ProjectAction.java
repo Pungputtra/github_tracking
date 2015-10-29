@@ -6,6 +6,7 @@ package com.sale.struts.action;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +17,12 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.sale.struts.data.tblcustomer;
 import com.sale.struts.data.tblproject;
 import com.sale.struts.form.DetailForm;
 import com.sale.struts.form.ProjectForm;
+
+
 
 /** 
  * MyEclipse Struts
@@ -49,12 +53,13 @@ public class ProjectAction extends Action {
 			return mapping.findForward("nologin");
 		}
 		
-		String proid=null, proname=null, cusid=null, submit =null, search=null, delete=null, update=null, username = null;
+		String proid=null, proname=null, cusid=null, submit =null, search=null, delete=null, update=null, username = null, cusname=null;
 		
 		
 		proid = projectForm.getProid();
 		proname = projectForm.getProname();
 		cusid = projectForm.getCusid();
+		cusname = projectForm.getCusname();
 		
 		username = (String) session.getAttribute("username");
 		
@@ -65,7 +70,7 @@ public class ProjectAction extends Action {
 		
 		
 		
-		
+		tblproject tbl = new tblproject();
 		tblproject tblp = new tblproject();
 		
 		
@@ -131,7 +136,21 @@ public class ProjectAction extends Action {
 			projectForm.setProname("");
 			projectForm.setCusid("");
 					
+		
 		}else{
+			String[] result = new String[4];
+			List customerlist = null;
+			try {
+				tblcustomer tblc = new tblcustomer();
+				customerlist = tblc.select_customer("");
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("customerlist", customerlist);
+			
 			
 		}
 		
