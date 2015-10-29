@@ -131,6 +131,8 @@ public class ProjectAction extends Action {
 			projectForm.setProname("");
 			projectForm.setCusid("");
 					
+		}else{
+			
 		}
 		
 		return mapping.findForward("success");

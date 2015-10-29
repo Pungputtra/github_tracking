@@ -51,7 +51,7 @@
   						</div>
   					
   						<div class="col-md-4">
-  							<br/><html:submit styleClass="btn btn-default"  value="Search" property="search">Search</html:submit><html:errors property="cusid"/>
+  							<br/><html:submit styleClass="btn btn-default"  value="Get Project" property="search">Search</html:submit><html:errors property="cusid"/>
   						</div>
 				
 					</div><br/>
