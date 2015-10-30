@@ -54,18 +54,17 @@ public class DetailAction extends Action {
 			return mapping.findForward("nologin");
 		}
 		
-		String id, cusid, cusname, proid, statusid, remark, date, username, 
+		String id, cusid, proid, statusid, remark, date, username, 
 		submit, search, delete, showlist = null;
 		
 		id = detailForm.getId();
 		cusid = detailForm.getCusid();
-		cusname = detailForm.getCusname();
 		proid = detailForm.getProid();
 		statusid = detailForm.getStatus();
 		remark = detailForm.getRemark();
 		date = detailForm.getDate();
+		username = (String)session.getAttribute("username");
 		
-		username = "natchi";
 		
 		submit = request.getParameter("submit");
 		search = detailForm.getSearch();
@@ -77,40 +76,44 @@ public class DetailAction extends Action {
 		
 		
 		if(submit != "" && submit != null){
+			
 			try {
-				tbl.insert_to_detail(cusid, cusname, proid, statusid, remark, date, username);
+				tbl.insert_to_detail(cusid, proid, statusid, remark, date, username);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			detailForm.setCusid("");
-			detailForm.setCusname("");
 			detailForm.setProid("");
 			detailForm.setStatusid("");
 			detailForm.setRemark("");
 			detailForm.setDate("");
 			
 			
+			
 		}else if(search != "" && search != null){
-			String[] result = new String[5];
-			List customerlist = null;
+			String[] result = new String[7];
+			List projectlist = null;
 			try {
-				result = tbl.select_from_detail(id, showlist);
-				List projectlist = tblp.select_project(cusid);
+				
+				projectlist = tblp.select_project(cusid);
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Object projectlist = null;
+			
 			request.setAttribute("projectlist", projectlist);
 			
 			
+			detailForm.setId(result[0]);
+			detailForm.setCusid(result[1]);
 			detailForm.setProid(result[2]);
 			detailForm.setStatusid(result[3]);
 			detailForm.setRemark(result[4]);
-			
+			detailForm.setDate(result[5]);
+			detailForm.setUsername(result[6]);
 				
 			
 		}
@@ -128,11 +131,34 @@ public class DetailAction extends Action {
 			
 			detailForm.setId("");
 			detailForm.setCusid("");
-			
 			detailForm.setProid("");
 			detailForm.setStatusid("");
 			detailForm.setRemark("");
+			detailForm.setDate("");
+			detailForm.setUsername("");
 			
+			
+		}else{
+			String[] result = new String[7];
+			List customerlist = null;
+			try {
+				tblcustomer tblc = new tblcustomer();
+				customerlist = tblc.select_customer("");
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("customerlist", customerlist);
+			
+			detailForm.setId(result[0]);
+			detailForm.setCusid(result[1]);
+			detailForm.setProid(result[2]);
+			detailForm.setStatusid(result[3]);
+			detailForm.setRemark(result[4]);
+			detailForm.setDate(result[5]);
+			detailForm.setUsername(result[6]);
 			
 		}
 			

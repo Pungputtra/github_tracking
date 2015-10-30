@@ -2,81 +2,91 @@
 <%@ page import="com.sale.struts.form.DetailForm"%>
 <%@ page import="com.sale.struts.form.CustomerForm"%>
 <%@ page import="com.sale.struts.form.ProjectForm"%>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ page import = "java.util.*" %>
- 
-<html> 
+
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+
+
+<html>
 	<head>
 		<title>JSP for DetailForm form</title>
 		
 		<link rel="stylesheet" href="css/bootstrap.css" type="text/css"></link>
 		<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"></link>
-	
-		<script type="text/javascript" src="js/bootstrap.js"></script>	
+		
+		<script type="text/javascript" src="js/bootstrap.js"></script>
 		
 	</head>
 	
 	<%@ include file="menu.jsp"%>
-  		
-	<!-- Navs -->	
-		
+  	
+	<!-- Navs -->
+	
 		<br><br>
 		<div class="container-fluid">
-			
+		
 			<div class="row">
   				<div class="col-md-3">
   					<ul class="nav nav-pills nav-stacked">
 						<li><a href="#">Home</a></li>
 						<li><a href="customer.jsp">Customer</a></li>
 						<li><a href="employee.jsp">Employee</a></li>
-						<li><a href="project.jsp">Project</a></li>
-						<li class="active"><a href="detail.jsp">Detail</a></li>
+						<li><a href="project.do">Project</a></li>
+						<li class="active"><a href="detail.do">Detail</a></li>
 					</ul>
   				</div>
   				
   	<!-- End Navs -->
-  		
+  	
+  	
   		<div class="col-md-9 ">
   		
-		<html:form action="/detail">
+			<html:form action="/detail">
 		
 				<div class="container">
 				
 					<div class="row">
-  						
+  					
   						<div class="col-md-3"><label>Customer Name :</label>
-  							<html:select styleClass="form-control" property="cusname">
-  							
+  						
+  						<!-- List Customer Name -->
+  						
+  							<html:select styleClass="form-control" property="cusid">
 	  							<html:option value=""></html:option>
-									<% if(request.getAttribute("projectlist") != null)
+									<% if(request.getAttribute("customerlist") != null)
 									{
-										List projectlist = (List)request.getAttribute("projectlist");
-										Iterator iter = projectlist.iterator();
-											
+										List customerlist = (List)request.getAttribute("customerlist");
+										Iterator iter = customerlist.iterator();
+										
 										while(iter.hasNext())
 										{
-											ProjectForm pjform = (ProjectForm) iter.next();
+											CustomerForm cmform = (CustomerForm) iter.next();
 									%>
-									<html:option value="<%=pjform.getProid()%>"><%=pjform.getProname()%></html:option>
+									<html:option value="<%=cmform.getCusid()%>"><%=cmform.getCusname()%></html:option>
 									<%
 										}
 									}%>
-								
 							</html:select>
+							
+						<!-- End List Customer Name -->
+						
 						</div>
   						
   						
   						<div class="col-md-6">
-  							<br/><html:submit styleClass="btn btn-default"  value="Get Project" property="search">Search</html:submit><html:errors property="cusid"/>
+  							<br/><html:submit styleClass="btn btn-default"  value="Get Project" property="search">Search</html:submit>
   						</div>
-	
+						
 					</div><br/>
-						
-						
+					
+					
 					<div class="row">
   					
   						<div class="col-md-3"><label>Project :</label>
+  						
+  						<!-- List Project -->
+  						
   							<html:select styleClass="form-control" property="proid">
 								<html:option value="">กรุณาเลือกโปรเจก</html:option>
 								<% if(request.getAttribute("projectlist") != null)
@@ -93,6 +103,9 @@
 									}
 								}%>
 							</html:select>
+							
+						<!-- End List Project -->
+						
 						</div>
 						
 						
@@ -105,10 +118,10 @@
 								<html:option value="5">นัด present</html:option>
   							</html:select>
   						</div>
-  							
+  						
 					</div><br/>
-						
-						
+					
+					
 					<div class="row">
   					
   						<div class="col-md-6"><label>Remark :</label>
@@ -116,8 +129,8 @@
   						</div>
   						
   						
-  						<div class="col-md-6"> 
-							
+  						<div class="col-md-6">
+						
 							<br/>
 							<button type="submit" class="btn btn-default" value="INSERT" name="submit">
 							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
@@ -130,28 +143,26 @@
 							<button type="showlist" class="btn btn-default" value="Show List" name="showlist">
 							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 							SHOWLIST</button>
-						
+							
 						</div>
-				
+						
 					</div><br/>
-				
+					
 				</div>
-					
-					
-					
+				
+				
+				
 				<br>
 				<div class="col-md-12">
+				
+				<!-- Table Show List -->
+				
 					<table class="table table-bordered">
-		
+					
 						<thead>
 							<tr>
-								<th class="text-center">ID</th>
-								<th class="text-center">Customer Name</th>
+								<th class="text-center">Project ID</th>
 								<th class="text-center">Project Name</th>
-								<th class="text-center">Status</th>
-								<th class="text-center">Remark</th>
-								<th class="text-center">Date</th>
-								<th class="text-center">Username</th>
 							</tr>
 						</thead>
 						
@@ -159,42 +170,46 @@
 								{
 									List projectlist = (List)request.getAttribute("projectlist");
 									Iterator iter = projectlist.iterator();
-														
+									
 									while(iter.hasNext())
 									{
 										ProjectForm pjform = (ProjectForm) iter.next();
 								%>
-							
-						<tbody>		
+								
+						<tbody>
 							<tr>
 								<td><%=pjform.getProid()%></td>
 								<td><%=pjform.getProname()%></td>
 							</tr>
 						</tbody>
-									
+						
 								<%
 									}
 									
 								}else{
 								%>
 								
-						<tbody>	
+						<tbody>
 							<tr>
-								<td colspan="12" align="center">not found</td>			
-							</tr>	
-						</tbody>				
-							
-							<% 
+								<td colspan="12" align="center">not found</td>		
+							</tr>
+						</tbody>
+						
+							<%
 							}
 							%>
+							
 					</table>
+					
+					<!-- End Table Show List -->
+					
 				</div>
 				
-						
-		</html:form>
+				
+			</html:form>
 		
 		</div>
-				
+		
 	</body>
 	
 </html>

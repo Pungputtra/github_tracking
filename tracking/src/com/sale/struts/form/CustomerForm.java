@@ -60,7 +60,7 @@ public class CustomerForm extends ActionForm {
 	
 	private String status;
 	
-
+	public CustomerForm(){}
 	public CustomerForm(String s1, String s2) {
 		this.cusid = s1;
 		this.cusname = s2;

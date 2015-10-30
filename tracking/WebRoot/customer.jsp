@@ -27,8 +27,8 @@
 					<li><a href="#">Home</a></li>
 					<li class="active"><a href="customer.jsp">Customer</a></li>
 					<li><a href="employee.jsp">Employee</a></li>
-					<li><a href="project.jsp">Project</a></li>
-					<li><a href="detail.jsp">Detail</a></li>
+					<li><a href="project.do">Project</a></li>
+					<li><a href="detail.do">Detail</a></li>
 				</ul>
   			</div>
   				
@@ -49,7 +49,7 @@
   					</div>
   					
   					<div class="col-md-4">
-  						<br/><button type ="search" class="btn btn-default"  value="Search" name="search">
+  						<br/><button type ="search" class="btn btn-default" value="Search" name="search">
   						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
   						Search</button>
   					</div>

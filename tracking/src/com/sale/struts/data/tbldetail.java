@@ -9,30 +9,34 @@ import java.util.List;
 
 import com.sale.struts.data.DBConnect;
 import com.sale.struts.form.DetailForm;
+import com.sale.struts.form.CustomerForm;
 import com.sale.struts.form.ProjectForm;
 
 public class tbldetail {
-	
+
 	DBConnect agent = new DBConnect();
 	Connection conn = null;
 	Statement pStmt = null;
 	ResultSet rs = null;
 	
-	public void insert_to_detail(String cusid, String cusname,
+	public void insert_to_detail(String cusid,
 			String proid,
 			String statusid,
 			String remark,
 			String date,
 			String username)throws Exception{
-		
+			
 		conn = agent.getConnectMYSql();
 		
-		String sqlQuery = "insert into detail (cusid, cusname, proid, statusid, remark, date, username)  value('"+cusid+"', '"+cusname+"', '"+proid+"', '"+statusid+"', '"+remark+"', now(), '"+username+"')";
+		String sqlQuery = "insert into detail(cusid, proid, statusid, remark, date, username) value('"+cusid+"', '"+proid+"', '"+statusid+"', '"+remark+"', now(), '"+username+"')";
+
+		
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlQuery);
 		
 		pStmt.close();
 		conn.close();
+		
 	}
 	
 	
@@ -51,12 +55,13 @@ public class tbldetail {
 			result[5] = rs.getString("remark");
 			result[6] = rs.getString("date");
 			result[7] = rs.getString("username");
-				
+			
 		}
 		rs.close();
 		conn.close();
 		pStmt.close();
-		return result;	
+		return result;
+		
 	}
 	
 	
@@ -122,5 +127,42 @@ public class tbldetail {
 		pStmt.close();
 		conn.close();
 	}
+	
+	
+	
+	public List select_customer(String cusid){
+		List customerList = new ArrayList();
+		
+		try {
+			
+			conn = agent.getConnectMYSql();
+			
+			String sqlQ = "SELECT * FROM customer ";
+			if(!cusid.equals("")){
+				sqlQ += "where cusid='"+cusid+"'";
+			}
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlQ);
+			
+			while(rs.next()){
+								
+				customerList.add(new CustomerForm(rs.getString("cusid"), rs.getString("cusname")));
+				
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return customerList;
+		
+	}
+	
+	
+
 	
 }

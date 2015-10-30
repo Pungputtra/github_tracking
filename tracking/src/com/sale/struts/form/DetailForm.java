@@ -27,7 +27,7 @@ public class DetailForm extends ActionForm {
 	/** cusid property */
 	private String cusid;
 	
-	private String cusname;
+	private String proid;
 	
 	/** statusid property */
 	private String statusid;
@@ -36,7 +36,9 @@ public class DetailForm extends ActionForm {
 	private String remark;
 	
 	private String date;
-
+	
+	private String username;
+	
 	
 	private String submit, search;
 	
@@ -44,20 +46,14 @@ public class DetailForm extends ActionForm {
 	
 	private String showlist;
 	
-	private String proid;
 	
 	
 	private String project;
-
 	
 	private String status;
 	
-	private String username;
 	
 	
-	
-	
-
 	/*
 	 * Generated Methods
 	 */
@@ -115,6 +111,14 @@ public class DetailForm extends ActionForm {
 		this.cusid = cusid;
 	}
 	
+	public String getProid() {
+		return proid;
+	}
+
+	public void setProid(String proid) {
+		this.proid = proid;
+	}
+	
 	/** 
 	 * Returns the statusid.
 	 * @return String
@@ -146,7 +150,22 @@ public class DetailForm extends ActionForm {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	
+	public String getDate() {
+		return date;
+	}
 
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public String getSubmit() {
 		return submit;
@@ -171,21 +190,13 @@ public class DetailForm extends ActionForm {
 	public void setDelete(String delete) {
 		this.delete = delete;
 	}
-
-	public String getProid() {
-		return proid;
+	
+	public String getShowlist() {
+		return showlist;
 	}
 
-	public void setProid(String proid) {
-		this.proid = proid;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
+	public void setShowlist(String showlist) {
+		this.showlist = showlist;
 	}
 
 	public String getProject() {
@@ -196,36 +207,11 @@ public class DetailForm extends ActionForm {
 		this.project = project;
 	}
 
-	public String getDate() {
-		return date;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-
-	public String getShowlist() {
-		return showlist;
-	}
-
-	public void setShowlist(String showlist) {
-		this.showlist = showlist;
-	}
-
-	public String getCusname() {
-		return cusname;
-	}
-
-	public void setCusname(String cusname) {
-		this.cusname = cusname;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 }

@@ -27,8 +27,8 @@
 					<li><a href="#">Home</a></li>
 					<li ><a href="customer.jsp">Customer</a></li>
 					<li class="active"><a href="employee.jsp">Employee</a></li>
-					<li><a href="project.jsp">Project</a></li>
-					<li><a href="detail.jsp">Detail</a></li>
+					<li><a href="project.do">Project</a></li>
+					<li><a href="detail.do">Detail</a></li>
 				</ul>
   			</div>
   				
