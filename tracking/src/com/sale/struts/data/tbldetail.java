@@ -43,18 +43,17 @@ public class tbldetail {
 	public String[] select_from_detail(String id, String cusname) throws IOException, Exception{
 		conn = agent.getConnectMYSql();
 		String sqlQuery = "select id, cusname from detail where id = '"+id+"' and cusname = '"+cusname+"'";
-		String[] result = new String[8];
+		String[] result = new String[7];
 		pStmt = conn.createStatement();
 		rs = pStmt.executeQuery(sqlQuery);
 		while(rs.next()){
 			result[0] = rs.getString("id");
 			result[1] = rs.getString("cusid");
-			result[2] = rs.getString("cusname");
-			result[3] = rs.getString("proid");
-			result[4] = rs.getString("statusid");
-			result[5] = rs.getString("remark");
-			result[6] = rs.getString("date");
-			result[7] = rs.getString("username");
+			result[2] = rs.getString("proid");
+			result[3] = rs.getString("statusid");
+			result[4] = rs.getString("remark");
+			result[5] = rs.getString("date");
+			result[6] = rs.getString("username");
 			
 		}
 		rs.close();

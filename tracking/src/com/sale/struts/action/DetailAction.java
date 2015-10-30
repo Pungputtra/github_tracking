@@ -89,7 +89,7 @@ public class DetailAction extends Action {
 			detailForm.setStatusid("");
 			detailForm.setRemark("");
 			detailForm.setDate("");
-			
+			detailForm.setUsername("");
 			
 			
 		}else if(search != "" && search != null){
