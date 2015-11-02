@@ -121,7 +121,6 @@ public class tblproject {
 	}
 	
 	
-	
 	public void delete_from_project(String proid) throws IOException, Exception{
 		conn = agent.getConnectMYSql();
 		String sqlQuery = "delete from project where proid = '"+proid+"'";
@@ -149,8 +148,5 @@ public class tblproject {
 		conn.close();
 			
 	}
-	
-	
-	
 
 }

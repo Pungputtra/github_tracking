@@ -41,7 +41,7 @@ public class tblemployee {
 		rs = pStmt.executeQuery(sqlQuery);
 		while(rs.next()){
 			result[0] = rs.getString("username");
-			
+			result[1] = rs.getString("password");
 			result[2] = rs.getString("empname");
 			result[3] = rs.getString("position");
 			result[4] = rs.getString("address");

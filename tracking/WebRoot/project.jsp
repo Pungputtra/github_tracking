@@ -90,7 +90,7 @@
 						
 						
 						<div class="col-md-6">
-	  						<br/><html:submit styleClass="btn btn-default" value="Get Project" property="search">Search</html:submit><html:errors property="cusid"/>
+	  						<br/><html:submit styleClass="btn btn-default" value="Get Project" property="search">Search</html:submit>
 	  					</div>
 						
 					</div><br/>
@@ -98,13 +98,11 @@
 					
 					<div class="row">
   					
-  						<div class="col-md-3"><label>Project :</label>
+  						<div class="col-md-5"><label>Project Name :</label>
   						
-  						<!-- List Project -->
-  						
-  							<html:select styleClass="form-control" property="proname">
-								<html:option value="">กรุณาเลือกโปรเจก</html:option>
-								<% if(request.getAttribute("projectlist") != null)
+  							<html:text styleClass="form-control" property="proname"/>
+  							
+  								<% if(request.getAttribute("projectlist") != null)
 								{
 									List projectlist = (List)request.getAttribute("projectlist");
 									Iterator iter = projectlist.iterator();
@@ -116,29 +114,27 @@
 								<html:option value="<%=pjform.getProid()%>"><%=pjform.getProname()%></html:option>
 								<%
 									}
-								}%>
-							</html:select>
-							
-						<!-- End List Project -->
+								}%>	
+  							
+						</div>
 						
+						
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								<html:submit styleClass="btn btn-default" value="INSERT" property="submit">INSERT</html:submit>
+								<html:submit styleClass="btn btn-default" value="UPDATE" property="update">UPDATE</html:submit>
+								<html:submit styleClass="btn btn-default" value="DELETE" property="delete">DELETE</html:submit>
+							</div>
 						</div>
+						
+					</div><br/>
 					
-					
-					
-					<br>
-					<div class="row">
-						<div class="col-md-5">
-							<html:submit styleClass="btn btn-default" value="INSERT" property="submit">INSERT</html:submit>
-							<html:submit styleClass="btn btn-default" value="UPDATE" property="update">UPDATE</html:submit>
-							<html:submit styleClass="btn btn-default" value="DELETE" property="delete">DELETE</html:submit>
-						</div>
-					</div><br>
-					
-			</html:form>
-			
-		</div>
-		
-			<br>
+				</div>
+				
+				
+				
+				<br>
 				<div class="col-md-12">
 				
 				<!-- Table Show List -->
@@ -175,10 +171,10 @@
 									
 								}else{
 								%>
-								
+									
 						<tbody>
 							<tr>
-								<td colspan="12" align="center">not found</td>		
+								<td colspan="12" align="center">not found</td>	
 							</tr>
 						</tbody>
 						
@@ -188,10 +184,14 @@
 							
 					</table>
 					
-					<!-- End Table Show List -->
-					
+				<!-- End Table Show List -->
+				
 				</div>
-			
+							
+			</html:form>
+					
+		</div>
+	
 	</body>
 	
 </html>

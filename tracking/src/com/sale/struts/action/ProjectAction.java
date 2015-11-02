@@ -90,12 +90,15 @@ public class ProjectAction extends Action {
 			
 			
 		}else if(search != "" && search != null){
-			String[] result = new String[3];
+			String[] result = new String[4];
 			List projectlist = null;
+			List customerlist = null;
 			
 			try {
 				
+				tblcustomer tblc = new tblcustomer();
 				projectlist = tblp.select_project(cusid);
+				customerlist = tblc.select_customer("");
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -103,6 +106,7 @@ public class ProjectAction extends Action {
 			}
 			
 			request.setAttribute("projectlist", projectlist);
+			request.setAttribute("customerlist", customerlist);
 			
 			projectForm.setProid(result[0]);
 			projectForm.setProname(result[1]);
@@ -142,7 +146,9 @@ public class ProjectAction extends Action {
 		}else{
 			String[] result = new String[4];
 			List customerlist = null;
+			
 			try {
+				
 				tblcustomer tblc = new tblcustomer();
 				customerlist = tblc.select_customer("");
 				
@@ -153,7 +159,11 @@ public class ProjectAction extends Action {
 			
 			request.setAttribute("customerlist", customerlist);
 			
+			projectForm.setProid(result[0]);
+			projectForm.setProname(result[1]);
+			projectForm.setCusid(result[2]);
 			
+		
 		}
 		
 		return mapping.findForward("success");

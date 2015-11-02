@@ -21,6 +21,7 @@ import java.util.*;
 import com.sale.struts.data.tblcustomer;
 import com.sale.struts.data.tbldetail;
 import com.sale.struts.data.tblproject;
+import com.sale.struts.form.CustomerForm;
 import com.sale.struts.form.DetailForm;
 
 /** 
@@ -95,10 +96,14 @@ public class DetailAction extends Action {
 		}else if(search != "" && search != null){
 			String[] result = new String[7];
 			List projectlist = null;
+			List customerlist = null;
 			
 			try {
 				
+				tblcustomer tblc = new tblcustomer();
+				
 				projectlist = tblp.select_project(cusid);
+				customerlist = tblc.select_customer("");
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -106,7 +111,8 @@ public class DetailAction extends Action {
 			}
 			
 			request.setAttribute("projectlist", projectlist);
-			
+			request.setAttribute("customerlist", customerlist);
+
 			
 			detailForm.setId(result[0]);
 			detailForm.setCusid(result[1]);

@@ -40,7 +40,7 @@ public class tbldetail {
 	}
 	
 	
-	public String[] select_from_detail(String id, String cusname) throws IOException, Exception{
+	public String[] select_from_detail(String id, String cusname, String cusid) throws IOException, Exception{
 		conn = agent.getConnectMYSql();
 		String sqlQuery = "select id, cusname from detail where id = '"+id+"' and cusname = '"+cusname+"'";
 		String[] result = new String[7];
