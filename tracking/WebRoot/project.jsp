@@ -97,45 +97,62 @@
 					
 					
 					<div class="row">
-	  					
-	  					<div class="col-md-6"><label>Project Name :</label>
-	  						
-	  						<html:text styleClass="form-control" property="proname"/>
-	  						
-	  					</div>
-	  					
-					</div><br/>
+  					
+  						<div class="col-md-3"><label>Project :</label>
+  						
+  						<!-- List Project -->
+  						
+  							<html:select styleClass="form-control" property="proname">
+								<html:option value="">กรุณาเลือกโปรเจก</html:option>
+								<% if(request.getAttribute("projectlist") != null)
+								{
+									List projectlist = (List)request.getAttribute("projectlist");
+									Iterator iter = projectlist.iterator();
+										
+									while(iter.hasNext())
+									{
+										ProjectForm pjform = (ProjectForm) iter.next();
+								%>
+								<html:option value="<%=pjform.getProid()%>"><%=pjform.getProname()%></html:option>
+								<%
+									}
+								}%>
+							</html:select>
+							
+						<!-- End List Project -->
+						
+						</div>
 					
 					
 					
 					<br>
 					<div class="row">
-						<div class="col-md-5 col-md-offset-2">
+						<div class="col-md-5">
 							<html:submit styleClass="btn btn-default" value="INSERT" property="submit">INSERT</html:submit>
 							<html:submit styleClass="btn btn-default" value="UPDATE" property="update">UPDATE</html:submit>
 							<html:submit styleClass="btn btn-default" value="DELETE" property="delete">DELETE</html:submit>
 						</div>
-					</div>
+					</div><br>
 					
 			</html:form>
 			
 		</div>
 		
 			<br>
-			<div class="col-md-12">
-			
-			<!-- Table Show List -->
-			
-				<table class="table table-bordered">
+				<div class="col-md-12">
 				
-					<thead>
-						<tr>
-							<th class="text-center">Pro ID</th>
-							<th class="text-center">Project Name</th>
-							<th class="text-center">Customer Name</th>
-						</tr>
-					</thead>
+				<!-- Table Show List -->
+				
+					<table class="table table-bordered">
 					
+						<thead>
+							<tr>
+								<th class="text-center">Project ID</th>
+								<th class="text-center">Project Name</th>
+								<th class="text-center">Customer Name</th>
+							</tr>
+						</thead>
+						
 								<% if(request.getAttribute("projectlist") != null)
 								{
 									List projectlist = (List)request.getAttribute("projectlist");
@@ -168,12 +185,12 @@
 							<%
 							}
 							%>
+							
+					</table>
 					
-				</table>
-				
-			<!-- End Table Show List -->
-									
-			</div>
+					<!-- End Table Show List -->
+					
+				</div>
 			
 	</body>
 	

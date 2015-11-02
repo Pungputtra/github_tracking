@@ -91,16 +91,18 @@ public class ProjectAction extends Action {
 			
 		}else if(search != "" && search != null){
 			String[] result = new String[3];
+			List projectlist = null;
+			
 			try {
-				result = tblp.select_from_project(proid);
 				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				projectlist = tblp.select_project(cusid);
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			request.setAttribute("projectlist", projectlist);
 			
 			projectForm.setProid(result[0]);
 			projectForm.setProname(result[1]);
