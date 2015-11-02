@@ -25,29 +25,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 	
   </head>
-  <%@ include file="menu.jsp" %>
-  <body>
-     <br>
-     <div class="col-xs-6 col-md-1">
-    <a href="#" class="thumbnail">
-      <img src="img/Logo Edit.png"width="100px" height="50px"></img>
-    
-    </a>
-  </div>
-     
-		<ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="#">HOME</a></li>
-			<li role="presentation"><a href="#">CUSTOMER</a></li>
-			<li role="presentation"><a href="#">EMPLOYEE</a></li>
-			<li role="presentation"><a href="#">PRIECT</a></li>
-			<li role="presentation"><a href="#">DETAIL</a></li>
-			<li role="presentation"><a href="#">STATUS</a></li>
-		</ul>
-		
-
   
-					
+  <%@ include file="menu.jsp" %>
+  
+  <body>
+  
+  	<br>
+  	<div class="container">
+  	
+	  	<div class="row">
+	  		<div class="col-md-6 col-md-offset-1">
+	  		
+			  	<ul class="nav nav-pills">
+			  		<li role="presentation" class="active"><a href="index.jsp">Home</a></li>
+			  		<li role="presentation"><a href="customer.jsp">Customer</a></li>
+			  		<li role="presentation"><a href="employee.jsp">Employee</a></li>
+			  		<li role="presentation"><a href="project.do">Project</a></li>
+			  		<li role="presentation"><a href="detail.do">Detail</a></li>
+			  		<li role="presentation"><a href="status.jsp">Status</a></li>
+				</ul>
+			
+			</div>
 		
+		</div>
+	
+	</div>
 		
   </body>
 </html>

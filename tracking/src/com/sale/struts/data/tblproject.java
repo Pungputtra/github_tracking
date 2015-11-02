@@ -106,6 +106,8 @@ public class tblproject {
 				
 				customerlist.add(new ProjectForm(proid, proname));
 				
+				
+				
 			}
 			
 		} catch (IOException e) {

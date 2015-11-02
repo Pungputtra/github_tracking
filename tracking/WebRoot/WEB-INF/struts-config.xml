@@ -68,6 +68,7 @@
       scope="request"
       type="com.sale.struts.action.StatusAction">
       <set-property property="cancellable" value="true" />
+      <forward name="success" path="/status.jsp" />
     </action>
     <action
       attribute="loginForm"

@@ -98,6 +98,16 @@ public class EmployeeAction extends Action {
 		}else if(search != "" && search != null){
 			String[] result = new String[7];
 			try {
+				
+				username = employeeForm.getUsername();
+				password = employeeForm.getPassword();
+				empname = employeeForm.getEmpname();
+				position = employeeForm.getPosition();
+				address = employeeForm.getAddress();
+				tel = employeeForm.getTel();
+				mail = employeeForm.getMail();
+				
+				
 				result = tbl.select_from_employee(username, password);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

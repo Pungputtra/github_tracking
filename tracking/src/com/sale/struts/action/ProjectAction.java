@@ -97,6 +97,7 @@ public class ProjectAction extends Action {
 			try {
 				
 				tblcustomer tblc = new tblcustomer();
+				
 				projectlist = tblp.select_project(cusid);
 				customerlist = tblc.select_customer("");
 				
@@ -107,6 +108,8 @@ public class ProjectAction extends Action {
 			
 			request.setAttribute("projectlist", projectlist);
 			request.setAttribute("customerlist", customerlist);
+			
+			
 			
 			projectForm.setProid(result[0]);
 			projectForm.setProname(result[1]);

@@ -28,7 +28,7 @@
 		<div class="row">
   			<div class="col-md-3">
   				<ul class="nav nav-pills nav-stacked">
-					<li><a href="#">Home</a></li>
+					<li><a href="index.jsp">Home</a></li>
 					<li><a href="customer.jsp">Customer</a></li>
 					<li><a href="employee.jsp">Employee</a></li>
 					<li class="active"><a href="project.do">Project</a></li>
@@ -83,6 +83,7 @@
 										}
 									}%>
 							</html:select>
+							
 							
 						<!-- End List Customer Name -->
 	  					
