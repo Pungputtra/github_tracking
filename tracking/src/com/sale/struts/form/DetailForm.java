@@ -46,6 +46,7 @@ public class DetailForm extends ActionForm {
 	
 	private String showlist;
 	
+
 	
 	
 	private String project;
@@ -214,4 +215,6 @@ public class DetailForm extends ActionForm {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	
 }

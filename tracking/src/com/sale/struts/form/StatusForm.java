@@ -27,6 +27,8 @@ public class StatusForm extends ActionForm {
 	/** statusid property */
 	private String statusid;
 	
+	private String submit, delete;
+	
 	/*
 	 * Generated Methods
 	 */
@@ -82,6 +84,22 @@ public class StatusForm extends ActionForm {
 	 */
 	public void setStatusid(String statusid) {
 		this.statusid = statusid;
+	}
+
+	public String getSubmit() {
+		return submit;
+	}
+
+	public void setSubmit(String submit) {
+		this.submit = submit;
+	}
+
+	public String getDelete() {
+		return delete;
+	}
+
+	public void setDelete(String delete) {
+		this.delete = delete;
 	}
 
 }

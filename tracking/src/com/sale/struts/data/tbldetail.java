@@ -128,6 +128,38 @@ public class tbldetail {
 	}
 	
 	
+	public List select_detail(String cusid){
+		List detailList = new ArrayList();
+		
+		try {
+			
+			conn = agent.getConnectMYSql();
+			
+			String sqlQ = "SELECT * FROM detail ";
+			if(!cusid.equals("")){
+				sqlQ += "where cusid='"+cusid+"'";
+			}
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlQ);
+			
+			while(rs.next()){
+								
+				detailList.add(new CustomerForm(rs.getString("cusid"), rs.getString("cusname")));
+				
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return detailList;
+	}
+	
+	
 	
 	public List select_customer(String cusid){
 		List customerList = new ArrayList();

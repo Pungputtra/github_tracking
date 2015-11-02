@@ -4,6 +4,8 @@
  */
 package com.sale.struts.action;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,6 +14,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+
+import com.sale.struts.data.tblstatus;
 import com.sale.struts.form.StatusForm;
 
 /** 
@@ -43,6 +47,46 @@ public class StatusAction extends Action {
 			return mapping.findForward("nologin");
 		}
 		
-		return null;
+		String statusid=null, statusname=null, submit=null, delete=null;
+		
+		statusid = statusForm.getStatusid();
+		statusname = statusForm.getStatusid();
+		
+		submit = request.getParameter("submit");
+		delete = request.getParameter("delete");
+		
+		
+		tblstatus tbls = new tblstatus();
+		
+		
+		if(submit != "" && submit != null){
+			
+			try {
+				tbls.insert_to_status(statusid, statusname);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			statusForm.setStatusid("");
+			statusForm.setStatusname("");
+	
+		}else if(delete != "" && delete != null){
+			try {
+				tbls.delete_from_status(statusid);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			statusForm.setStatusid("");
+			statusForm.setStatusname("");
+	
+		}
+		
+		return mapping.findForward("success");
 	}
 }

@@ -1,16 +1,17 @@
 <%@ page language="java" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%> 
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
- 
-<html> 
+
+<html>
 	<head>
+	
 		<title>JSP for LoginForm form</title>
 		
 			<link rel="stylesheet" href="css/bootstrap.css" type="text/css"></link>
 			<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"></link>
-	
-			<script type="text/javascript" src="js/bootstrap.js"></script>	
-		
+			
+			<script type="text/javascript" src="js/bootstrap.js"></script>
+			
 	</head>
 	
 	<body>
@@ -27,33 +28,33 @@
   			
   			<div class="panel panel-default">
   			<div class="panel-body">
-  		
+  			
   				<div class="page-header">
   					<h3>Login</h3>
 				</div>
-			
-
+				
+				
   				<html:form action="/login">
-
+				
 					<div class="row">
-  							
+  					
   						<div class="col-md-12"><label>Username</label>
-  							
+  						
   							<div class="input-group">
   								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
   								
   								<html:text styleClass="form-control" property="username"/>
   							</div>	
-  								
+  							
   						</div>
-  
+  						
 					</div><br/>
-						
-						
+					
+					
 					<div class="row">
-  							
+  					
   						<div class="col-md-12"><label>Password</label>
-  							
+  						
   							<div class="input-group">
   								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
   								
@@ -72,14 +73,6 @@
   									String alert =(String) request.getAttribute("alert");
   							%>
   								<p class = "text-danger"><%=alert%></p>
-  								
-  								
-  								<div class="alert alert-danger" role="alert">
-  									<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  									<span class="sr-only">Error:</span>
-  										Username or Password Incorrect
-								</div>
-
   							<% 
   								}
   							 %>

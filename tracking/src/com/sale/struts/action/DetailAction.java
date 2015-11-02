@@ -95,6 +95,7 @@ public class DetailAction extends Action {
 		}else if(search != "" && search != null){
 			String[] result = new String[7];
 			List projectlist = null;
+			
 			try {
 				
 				projectlist = tblp.select_project(cusid);
@@ -136,6 +137,32 @@ public class DetailAction extends Action {
 			detailForm.setRemark("");
 			detailForm.setDate("");
 			detailForm.setUsername("");
+			
+			
+		}
+		
+		else if(showlist != "" && showlist != null){
+			String[] result = new String[7];
+			List detaillist = null;
+			try {
+				tbldetail tbld = new tbldetail();
+				detaillist = tbld.select_detail("");
+				
+			}  catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("detaillist", detaillist);
+			
+			detailForm.setId(result[0]);
+			detailForm.setCusid(result[1]);
+			detailForm.setProid(result[2]);
+			detailForm.setStatusid(result[3]);
+			detailForm.setRemark(result[4]);
+			detailForm.setDate(result[5]);
+			detailForm.setUsername(result[6]);
+			
 			
 			
 		}else{

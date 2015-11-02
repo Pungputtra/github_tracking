@@ -33,6 +33,7 @@
 					<li><a href="employee.jsp">Employee</a></li>
 					<li class="active"><a href="project.do">Project</a></li>
 					<li><a href="detail.do">Detail</a></li>
+					<li><a href="status.jsp">Status</a></li>
 				</ul>
   			</div>
   			
