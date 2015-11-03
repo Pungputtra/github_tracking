@@ -111,9 +111,9 @@ public class ProjectAction extends Action {
 			
 			
 			
-			projectForm.setProid(result[0]);
-			projectForm.setProname(result[1]);
-			projectForm.setCusid(result[2]);
+//			projectForm.setProid(result[0]);
+//			projectForm.setProname(result[1]);
+//			projectForm.setCusid(result[2]);
 			
 			
 			

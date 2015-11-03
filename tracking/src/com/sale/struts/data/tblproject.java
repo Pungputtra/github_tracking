@@ -34,6 +34,8 @@ public class tblproject {
 				proid = rs.getString("proid");
 				proname = rs.getString("proname");
 				
+				
+				
 				projectlist.add(new ProjectForm(proid, proname));
 				
 			}

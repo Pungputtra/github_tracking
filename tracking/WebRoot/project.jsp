@@ -67,7 +67,7 @@
 	  					
 	  					<!-- List Customer Name -->
 	  					
-	  						<html:select styleClass="form-control" property="cusname">
+	  						<html:select styleClass="form-control" property="cusid">
 	  							<html:option value=""></html:option>
 									<% if(request.getAttribute("customerlist") != null)
 									{
@@ -101,22 +101,10 @@
   					
   						<div class="col-md-5"><label>Project Name :</label>
   						
-  							<html:text styleClass="form-control" property="proname"/>
+  							<html:text styleClass="form-control" property="proname">
   							
-  								<% if(request.getAttribute("projectlist") != null)
-								{
-									List projectlist = (List)request.getAttribute("projectlist");
-									Iterator iter = projectlist.iterator();
-										
-									while(iter.hasNext())
-									{
-										ProjectForm pjform = (ProjectForm) iter.next();
-								%>
-								<html:option value="<%=pjform.getProid()%>"><%=pjform.getProname()%></html:option>
-								<%
-									}
-								}%>	
-  							
+  								
+  							</html:text>
 						</div>
 						
 						
@@ -164,6 +152,8 @@
 							<tr>
 								<td><%=pjform.getProid()%></td>
 								<td><%=pjform.getProname()%></td>
+								
+								
 							</tr>
 						</tbody>
 						
