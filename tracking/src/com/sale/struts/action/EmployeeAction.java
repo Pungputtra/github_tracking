@@ -108,7 +108,7 @@ public class EmployeeAction extends Action {
 				mail = employeeForm.getMail();
 				
 				
-				result = tbl.select_from_employee(username, password);
+				result = tbl.select_from_employee(username);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

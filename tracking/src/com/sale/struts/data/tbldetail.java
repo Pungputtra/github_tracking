@@ -136,9 +136,7 @@ public class tbldetail {
 			conn = agent.getConnectMYSql();
 			
 			String sqlQ = "SELECT * FROM detail ";
-			if(!cusid.equals("")){
-				sqlQ += "where cusid='"+cusid+"'";
-			}
+			
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlQ);
 			

@@ -103,7 +103,7 @@
   						
   							<html:text styleClass="form-control" property="proname">
   							
-  								
+
   							</html:text>
 						</div>
 						

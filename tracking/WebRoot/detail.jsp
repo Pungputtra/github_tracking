@@ -162,8 +162,13 @@
 					
 						<thead>
 							<tr>
+								<th class="text-center">ID</th>
+								<th class="text-center">Customer ID</th>
 								<th class="text-center">Project ID</th>
-								<th class="text-center">Project Name</th>
+								<th class="text-center">Status ID</th>
+								<th class="text-center">Remark</th>
+								<th class="text-center">Date</th>
+								<th class="text-center">Username</th>
 							</tr>
 						</thead>
 						
@@ -179,8 +184,7 @@
 								
 						<tbody>
 							<tr>
-								<td><%=pjform.getProid()%></td>
-								<td><%=pjform.getProname()%></td>
+								
 							</tr>
 						</tbody>
 						

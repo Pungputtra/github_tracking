@@ -32,9 +32,9 @@ public class tblemployee {
 	}
 	
 	
-	public String[] select_from_employee(String username, String password) throws IOException, Exception{
+	public String[] select_from_employee(String username) throws IOException, Exception{
 		conn = agent.getConnectMYSql();
-		String sqlQuery = "select username, empname, position, address, tel, mail from employee where username = '"+username+"' and password = '"+password+"'";
+		String sqlQuery = "select username, empname, position, address, tel, mail from employee where username = '"+username+"'";
 		
 		String[] result = new String[7];
 		pStmt = conn.createStatement();
