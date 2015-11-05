@@ -21,35 +21,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 		<link rel="stylesheet" href="css/bootstrap.css" type="text/css"></link>
 		<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"></link>
-		
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 	
   </head>
   
-  <%@ include file="menu.jsp" %>
   
   <body>
   
-  	<br>
-  	<div class="container">
-  	
-	  	<div class="row">
-	  		<div class="col-md-6 col-md-offset-1">
-	  		
-			  	<ul class="nav nav-pills">
-			  		<li role="presentation" class="active"><a href="index.jsp">Home</a></li>
-			  		<li role="presentation"><a href="customer.jsp">Customer</a></li>
-			  		<li role="presentation"><a href="employee.jsp">Employee</a></li>
-			  		<li role="presentation"><a href="project.do">Project</a></li>
-			  		<li role="presentation"><a href="detail.do">Detail</a></li>
-			  		<li role="presentation"><a href="status.jsp">Status</a></li>
-				</ul>
+			  	<nav class="navbar navbar-info">
+			  	<div class="container-fluid">
+			    
+			    	<div class="navbar-header">
+			      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        		<span class="sr-only">Toggle navigation</span>
+			        		<span class="icon-bar"></span>
+			        		<span class="icon-bar"></span>
+			        		<span class="icon-bar"></span>
+			      		</button>
+			    <img src="img/CompanyLogo.jpg"width="100px" height="50px"></img>
+			    	</div>
 			
+			      
+					<ul class="nav navbar-nav navbar-right">
+			        	<li><a href="#">Username</a></li>
+			        	<li class="dropdown">
+			          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">logout <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+			            <li><a href="#">login</a></li>
+			       </ul>
+			       		</li>
+			      </ul>
+			      <div class="container">
+	  			<div class="col-md-6 col-md-offset-1">
+	  		
+			  		<ul class="nav nav-pills nav-justified">
+			  			<li role="presentation" class="active"><a href="index.jsp">Home</a></li>
+			  			<li role="presentation"><a href="customer.jsp">Customer</a></li>
+			  			<li role="presentation"><a href="employee.jsp">Employee</a></li>
+			  			<li role="presentation"><a href="project.do">Project</a></li>
+			  			<li role="presentation"><a href="detail.do">Detail</a></li>
+			  			<li role="presentation"><a href="status.jsp">Status</a></li>
+					</ul>
+			
+				</div>
 			</div>
-		
-		</div>
-	
-	</div>
-		
-  </body>
+			    </div>
+			
+			</nav>
+			
+			
+			
+			
+			
+			
+			
+			
+  				
+   </body>
 </html>
