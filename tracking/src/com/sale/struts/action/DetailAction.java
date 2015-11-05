@@ -116,13 +116,13 @@ public class DetailAction extends Action {
 			request.setAttribute("customerlist", customerlist);
 			
 			
-			detailForm.setId(result[0]);
-			detailForm.setCusid(result[1]);
-			detailForm.setProid(result[2]);
-			detailForm.setStatusid(result[3]);
-			detailForm.setRemark(result[4]);
-			detailForm.setDate(result[5]);
-			detailForm.setUsername(result[6]);
+//			detailForm.setId(result[0]);
+//			detailForm.setCusid(result[1]);
+//			detailForm.setProid(result[2]);
+//			detailForm.setStatusid(result[3]);
+//			detailForm.setRemark(result[4]);
+//			detailForm.setDate(result[5]);
+//			detailForm.setUsername(result[6]);
 			
 			
 		}else if(delete != "" && delete != null){
@@ -153,7 +153,7 @@ public class DetailAction extends Action {
 			try {
 				
 				tbldetail tbld = new tbldetail();
-				detaillist = tbld.select_detail("");
+				detaillist = tbld.select_detail(cusid, proid, statusid);
 				
 			}  catch (Exception e) {
 				// TODO Auto-generated catch block

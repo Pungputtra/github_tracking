@@ -77,11 +77,13 @@ public class tbldetail {
 			
 			while(rs.next()){
 				
-				String proid=null, proname=null;
+				String proid=null, proname=null, cusname=null;
 				proid = rs.getString("proid");
 				proname = rs.getString("proname");
+				cusid = rs.getString("cusid");
+				cusname = rs.getString("cusname");
 				
-				projectlist.add(new ProjectForm(proid, proname));
+				projectlist.add(new ProjectForm(proid, proname, cusid, cusname));
 				
 			}
 			
@@ -128,19 +130,22 @@ public class tbldetail {
 	}
 	
 	
-	public List select_detail(String cusid){
+	public List select_detail(String cusid, String proid, String statusid){
 		List detailList = new ArrayList();
 		
 		try {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "SELECT detail.id, customer.cusname, project.proname, status.statusname, detail.remark, detail.`date`, detail.username ";
-				   sqlQ += "FROM customer ";
-				   sqlQ += "Inner Join detail ON customer.cusid = detail.cusid ";
+			String sqlQ = "SELECT detail.id, customer.cusname, project.proname, status.statusname, detail.remark, detail.date, detail.username ";
+				   sqlQ += "FROM customer Inner Join detail ON customer.cusid = detail.cusid ";
 				   sqlQ += "Inner Join project ON project.proid = detail.proid ";
-				   sqlQ += "Inner Join status ON status.statusid = detail.statusid";
-			
+				   sqlQ += "Inner Join status ON status.statusid = detail.statusid ";
+				   sqlQ += "where customer.cusid = '"+cusid+"' and  (project.proid = '"+proid+"' or status.statusid = '"+statusid+"')";
+				   
+				   
+				   
+				   
 			
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlQ);

@@ -134,6 +134,7 @@
 							<tr>
 								<th class="text-center">Project ID</th>
 								<th class="text-center">Project Name</th>
+								<th class="text-center">Customer ID</th>
 								<th class="text-center">Customer Name</th>
 							</tr>
 						</thead>
@@ -152,6 +153,7 @@
 							<tr>
 								<td><%=pjform.getProid()%></td>
 								<td><%=pjform.getProname()%></td>
+								<td><%=pjform.getCusid()%></td>
 								<td><%=pjform.getCusname()%></td>
 								
 								

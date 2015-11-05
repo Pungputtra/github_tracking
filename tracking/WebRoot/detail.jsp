@@ -112,6 +112,7 @@
 						
   						<div class="col-md-3"><label>Status :</label>
   							<html:select styleClass="form-control" property="status">
+  								<html:option value="">กรุณาเลือกสถานะ</html:option>
   								<html:option value="1">โทรครั้งแรก</html:option>
 								<html:option value="2">ส่ง email หรือ Fax</html:option>
 								<html:option value="3">โทรตาม ครั้งที่ 2</html:option>

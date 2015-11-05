@@ -24,17 +24,22 @@ public class tblproject {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "SELECT project.proid, project.proname FROM project WHERE project.cusid = '"+cusid+"'";
+			String sqlQ = "select p.proid, p.proname, c.cusid, c.cusname ";
+			sqlQ += "from project p inner join customer c on (p.cusid=c.cusid) ";
+			sqlQ += "where p.cusid = '"+cusid+"'";
+			
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
 				
-				String proid=null, proname=null;
+				String proid=null, proname=null, cusname=null;
 				proid = rs.getString("proid");
 				proname = rs.getString("proname");
+				cusid = rs.getString("cusid");
+				cusname = rs.getString("cusname");
 				
-				projectlist.add(new ProjectForm(proid, proname));
+				projectlist.add(new ProjectForm(proid, proname, cusid, cusname));
 				
 			}
 			
@@ -94,17 +99,19 @@ public class tblproject {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "SELECT project.proid, project.proname FROM project WHERE project.cusname = '"+cusname+"'";
+			String sqlQ = "SELECT project.proid, project.proname, cusid FROM project WHERE project.cusname = '"+cusname+"'";
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
 				
-				String proid=null, proname=null;
+				String proid=null, proname=null, cusid=null;
 				proid = rs.getString("proid");
 				proname = rs.getString("proname");
+				cusid = rs.getString("cusid");
+				cusname = rs.getString("cusname");
 				
-				customerlist.add(new ProjectForm(proid, proname));
+				customerlist.add(new ProjectForm(proid, proname, cusid, cusname));
 				
 				
 				

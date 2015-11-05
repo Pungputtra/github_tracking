@@ -41,20 +41,17 @@ public class ProjectForm extends ActionForm {
 	 * Generated Methods
 	 */
 	public ProjectForm(){}
-	public ProjectForm(String proid, String proname) {
+	public ProjectForm(String proid, String proname, String cusid, String cusname) {
 		this.proid = proid;
 		this.proname = proname;
+		this.cusid = cusid;
+		this.cusname = cusname;
 		
 		
 		// TODO Auto-generated constructor stub
 	}
 
-	/** 
-	 * Method validate
-	 * @param mapping
-	 * @param request
-	 * @return ActionErrors
-	 */
+	
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
 		// TODO Auto-generated method stub
