@@ -17,19 +17,20 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import java.util.*;
-
-import com.sale.struts.data.tblcustomer;
-import com.sale.struts.data.tbldetail;
-import com.sale.struts.data.tblproject;
-import com.sale.struts.form.CustomerForm;
 import com.sale.struts.form.DetailForm;
+import com.sale.struts.form.CustomerForm;
+import com.sale.struts.data.tbldetail;
+import com.sale.struts.data.tblcustomer;
+import com.sale.struts.data.tblproject;
 
-/** 
+
+
+/**
  * MyEclipse Struts
  * Creation date: 10-06-2015
  * 
  * XDoclet definition:
- * @struts.action path="/detail" name="detailForm" input="/form/detail.jsp" scope="request" validate="true"
+ * @struts.action path="/detail" name="detailForm" input="/detail.jsp" scope="request" validate="true"
  */
 public class DetailAction extends Action {
 	private DetailForm detailForm;
@@ -37,8 +38,8 @@ public class DetailAction extends Action {
 	/*
 	 * Generated Methods
 	 */
-
-	/** 
+	 
+	/**
 	 * Method execute
 	 * @param mapping
 	 * @param form
@@ -55,8 +56,7 @@ public class DetailAction extends Action {
 			return mapping.findForward("nologin");
 		}
 		
-		String id, cusid, proid, statusid, remark, date, username, 
-		submit, search, delete, showlist = null;
+		String id, cusid, proid, statusid, remark, date, username, submit, search, delete, showlist = null;
 		
 		id = detailForm.getId();
 		cusid = detailForm.getCusid();
@@ -64,6 +64,7 @@ public class DetailAction extends Action {
 		statusid = detailForm.getStatus();
 		remark = detailForm.getRemark();
 		date = detailForm.getDate();
+		
 		username = (String)session.getAttribute("username");
 		
 		
@@ -71,6 +72,7 @@ public class DetailAction extends Action {
 		search = detailForm.getSearch();
 		delete = request.getParameter("delete");
 		showlist = request.getParameter("showlist");
+		
 		
 		tbldetail tbl = new tbldetail();
 		tblproject tblp = new tblproject();
@@ -112,7 +114,7 @@ public class DetailAction extends Action {
 			
 			request.setAttribute("projectlist", projectlist);
 			request.setAttribute("customerlist", customerlist);
-
+			
 			
 			detailForm.setId(result[0]);
 			detailForm.setCusid(result[1]);
@@ -121,11 +123,10 @@ public class DetailAction extends Action {
 			detailForm.setRemark(result[4]);
 			detailForm.setDate(result[5]);
 			detailForm.setUsername(result[6]);
-				
 			
-		}
-		
-		else if(delete != "" && delete != null){
+			
+		}else if(delete != "" && delete != null){
+			
 			try {
 				tbl.delete_from_detail(id);
 			} catch (IOException e) {
@@ -145,12 +146,12 @@ public class DetailAction extends Action {
 			detailForm.setUsername("");
 			
 			
-		}
-		
-		else if(showlist != "" && showlist != null){
+		}else if(showlist != "" && showlist != null){
 			String[] result = new String[7];
 			List detaillist = null;
+			
 			try {
+				
 				tbldetail tbld = new tbldetail();
 				detaillist = tbld.select_detail("");
 				
@@ -161,6 +162,7 @@ public class DetailAction extends Action {
 			
 			request.setAttribute("detaillist", detaillist);
 			
+			
 			detailForm.setId(result[0]);
 			detailForm.setCusid(result[1]);
 			detailForm.setProid(result[2]);
@@ -170,11 +172,12 @@ public class DetailAction extends Action {
 			detailForm.setUsername(result[6]);
 			
 			
-			
 		}else{
 			String[] result = new String[7];
 			List customerlist = null;
+			
 			try {
+				
 				tblcustomer tblc = new tblcustomer();
 				customerlist = tblc.select_customer("");
 				
@@ -185,6 +188,7 @@ public class DetailAction extends Action {
 			
 			request.setAttribute("customerlist", customerlist);
 			
+			
 			detailForm.setId(result[0]);
 			detailForm.setCusid(result[1]);
 			detailForm.setProid(result[2]);
@@ -194,7 +198,7 @@ public class DetailAction extends Action {
 			detailForm.setUsername(result[6]);
 			
 		}
-			
+		
 		return mapping.findForward("success");
 	}
 }

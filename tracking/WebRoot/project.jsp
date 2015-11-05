@@ -152,6 +152,7 @@
 							<tr>
 								<td><%=pjform.getProid()%></td>
 								<td><%=pjform.getProname()%></td>
+								<td><%=pjform.getCusname()%></td>
 								
 								
 							</tr>

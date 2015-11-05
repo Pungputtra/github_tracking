@@ -47,6 +47,7 @@ public class DetailForm extends ActionForm {
 	private String showlist;
 	
 
+	private String cusname, proname, statusname;
 	
 	
 	private String project;
@@ -58,6 +59,17 @@ public class DetailForm extends ActionForm {
 	/*
 	 * Generated Methods
 	 */
+
+	public DetailForm(){}
+	public DetailForm(String id, String cusname, String proname, String statusname, String remark, String date, String username) {
+		this.id = id;
+		this.cusname = cusname;
+		this.proname = proname;
+		this.statusname = statusname;
+		this.remark = remark;
+		this.date = date;
+		this.username = username;
+	}
 
 	/** 
 	 * Method validate
@@ -214,6 +226,24 @@ public class DetailForm extends ActionForm {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getCusname() {
+		return cusname;
+	}
+	public void setCusname(String cusname) {
+		this.cusname = cusname;
+	}
+	public String getProname() {
+		return proname;
+	}
+	public void setProname(String proname) {
+		this.proname = proname;
+	}
+	public String getStatusname() {
+		return statusname;
+	}
+	public void setStatusname(String statusname) {
+		this.statusname = statusname;
 	}
 
 	

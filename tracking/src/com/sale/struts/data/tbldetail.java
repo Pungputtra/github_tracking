@@ -135,14 +135,19 @@ public class tbldetail {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "SELECT * FROM detail ";
+			String sqlQ = "SELECT detail.id, customer.cusname, project.proname, status.statusname, detail.remark, detail.`date`, detail.username ";
+				   sqlQ += "FROM customer ";
+				   sqlQ += "Inner Join detail ON customer.cusid = detail.cusid ";
+				   sqlQ += "Inner Join project ON project.proid = detail.proid ";
+				   sqlQ += "Inner Join status ON status.statusid = detail.statusid";
+			
 			
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
 								
-				detailList.add(new CustomerForm(rs.getString("cusid"), rs.getString("cusname")));
+				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusname"), rs.getString("proname"), rs.getString("statusname"), rs.getString("remark"), rs.getString("date"), rs.getString("username")));
 				
 			}
 			

@@ -44,6 +44,8 @@ public class ProjectForm extends ActionForm {
 	public ProjectForm(String proid, String proname) {
 		this.proid = proid;
 		this.proname = proname;
+		
+		
 		// TODO Auto-generated constructor stub
 	}
 

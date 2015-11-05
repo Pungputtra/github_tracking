@@ -163,27 +163,35 @@
 						<thead>
 							<tr>
 								<th class="text-center">ID</th>
-								<th class="text-center">Customer ID</th>
-								<th class="text-center">Project ID</th>
-								<th class="text-center">Status ID</th>
+								<th class="text-center">Customer Name</th>
+								<th class="text-center">Project Name</th>
+								<th class="text-center">Status Name</th>
 								<th class="text-center">Remark</th>
 								<th class="text-center">Date</th>
 								<th class="text-center">Username</th>
 							</tr>
 						</thead>
 						
-								<% if(request.getAttribute("projectlist") != null)
+								<% if(request.getAttribute("detaillist") != null)
 								{
-									List projectlist = (List)request.getAttribute("projectlist");
-									Iterator iter = projectlist.iterator();
+									List detaillist = (List)request.getAttribute("detaillist");
+									Iterator iter = detaillist.iterator();
 									
 									while(iter.hasNext())
 									{
-										ProjectForm pjform = (ProjectForm) iter.next();
+										DetailForm dtform = (DetailForm) iter.next();
 								%>
 								
 						<tbody>
 							<tr>
+							
+								<td><%=dtform.getId()%></td>
+								<td><%=dtform.getCusname()%></td>
+								<td><%=dtform.getProname()%></td>
+								<td><%=dtform.getStatusname()%></td>
+								<td><%=dtform.getRemark()%></td>
+								<td><%=dtform.getDate()%></td>
+								<td><%=dtform.getUsername()%></td>
 								
 							</tr>
 						</tbody>

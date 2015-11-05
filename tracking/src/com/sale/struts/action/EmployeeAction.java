@@ -100,7 +100,7 @@ public class EmployeeAction extends Action {
 			try {
 				
 				username = employeeForm.getUsername();
-				password = employeeForm.getPassword();
+				
 				empname = employeeForm.getEmpname();
 				position = employeeForm.getPosition();
 				address = employeeForm.getAddress();
