@@ -113,7 +113,7 @@ public class CustomerAction extends Action {
 				
 				status = customerForm.getStatus();
 				
-				result = tbl.select_from_customer(cusid);
+				result = tbl.select_from_customer(cusid, cusname);
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

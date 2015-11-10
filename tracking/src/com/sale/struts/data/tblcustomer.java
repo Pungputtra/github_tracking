@@ -40,9 +40,9 @@ public class tblcustomer {
 	}
 	
 	
-	public String[] select_from_customer(String cusid) throws IOException, Exception{
+	public String[] select_from_customer(String cusid, String cusname) throws IOException, Exception{
 		conn = agent.getConnectMYSql();
-		String sqlQuery = "select * from customer where cusid = '"+cusid+"'";
+		String sqlQuery = "select * from customer where cusid = '"+cusid+"' or cusname = '"+cusname+"'";
 		String[] result = new String[10];
 		pStmt = conn.createStatement();
 		rs = pStmt.executeQuery(sqlQuery);

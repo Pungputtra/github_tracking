@@ -49,6 +49,10 @@
   						<html:text styleClass="form-control" property="cusid"/>
   					</div>
   					
+  					<div class="col-md-4"><label>Customer Name :</label>
+  						<html:text styleClass="form-control" property="cusname"/><html:errors property="cusname"/>
+  					</div>
+  					
   					<div class="col-md-4">
   						<br/><button type ="search" class="btn btn-default" value="Search" name="search">
   						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -73,24 +77,20 @@
 				
 				<div class="row">
   				
-  					<div class="col-md-4"><label>Customer Name :</label>
-  						<html:text styleClass="form-control" property="cusname"/><html:errors property="cusname"/>
-  					</div>
+  					
   					
   					<div class="col-md-4"><label>Position :</label>
   						<html:text styleClass="form-control" property="position"/><html:errors property="position"/>
+  					</div>
+  					
+  					<div class="col-md-5"><label>Email :</label>
+  						<html:text styleClass="form-control" property="mail"/><html:errors property="mail"/>
   					</div>
 					
 				</div><br/>
 				
 				
-				<div class="row">
-  				
-  					<div class="col-md-8"><label>Email :</label>
-  						<html:text styleClass="form-control" property="mail"/><html:errors property="mail"/>
-  					</div>
-  					
-				</div><br/>
+				
 				
 				
 				<div class="row">
