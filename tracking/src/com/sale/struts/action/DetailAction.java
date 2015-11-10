@@ -56,7 +56,7 @@ public class DetailAction extends Action {
 			return mapping.findForward("nologin");
 		}
 		
-		String id, cusid, proid, statusid, remark, date, username, submit, search, delete, showlist = null;
+		String id="", cusid="", proid="", statusid="", remark="", date="", username="", username1="", submit="", search="", delete="", showlist="";
 		
 		id = detailForm.getId();
 		cusid = detailForm.getCusid();
@@ -64,6 +64,7 @@ public class DetailAction extends Action {
 		statusid = detailForm.getStatus();
 		remark = detailForm.getRemark();
 		date = detailForm.getDate();
+		username1 = detailForm.getUsername1();
 		
 		username = (String)session.getAttribute("username");
 		
@@ -153,7 +154,7 @@ public class DetailAction extends Action {
 			try {
 				
 				tbldetail tbld = new tbldetail();
-				detaillist = tbld.select_detail(cusid, proid, statusid);
+				detaillist = tbld.select_detail(cusid, proid, statusid, username1);
 				
 			}  catch (Exception e) {
 				// TODO Auto-generated catch block

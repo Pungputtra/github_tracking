@@ -86,16 +86,24 @@ public class tblemployee {
 		conn.close();
 	}
 	
-	public boolean employee_login(String username, String password){
+	public String employee_login(String username, String password){
 		boolean canlogin = false;
+		
+		
+		String empname="";
+		
 		try {
 			conn = agent.getConnectMYSql();
 			String sqlQuery = "select * from employee where username = '"+username+"' and password ='"+password+"'";
 			
+			
+			
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlQuery);
 			if(rs.next()){
-				canlogin = true;
+				
+				empname = rs.getString("empname");
+				
 			}
 			rs.close();
 			conn.close();
@@ -126,6 +134,6 @@ public class tblemployee {
 		}
 		
 		
-		return canlogin;
+		return empname;
 	}
 }

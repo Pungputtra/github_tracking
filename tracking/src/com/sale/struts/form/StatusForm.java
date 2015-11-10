@@ -21,13 +21,15 @@ public class StatusForm extends ActionForm {
 	 * Generated fields
 	 */
 
-	/** statusname property */
-	private String statusname;
-
+	
 	/** statusid property */
 	private String statusid;
 	
-	private String submit, delete;
+	/** statusname property */
+	private String statusname;
+	
+	
+	private String submit, search, delete, update;
 	
 	/*
 	 * Generated Methods
@@ -53,6 +55,22 @@ public class StatusForm extends ActionForm {
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 	}
+	
+	/** 
+	 * Returns the statusid.
+	 * @return String
+	 */
+	public String getStatusid() {
+		return statusid;
+	}
+
+	/** 
+	 * Set the statusid.
+	 * @param statusid The statusid to set
+	 */
+	public void setStatusid(String statusid) {
+		this.statusid = statusid;
+	}
 
 	/** 
 	 * Returns the statusname.
@@ -70,28 +88,20 @@ public class StatusForm extends ActionForm {
 		this.statusname = statusname;
 	}
 
-	/** 
-	 * Returns the statusid.
-	 * @return String
-	 */
-	public String getStatusid() {
-		return statusid;
-	}
-
-	/** 
-	 * Set the statusid.
-	 * @param statusid The statusid to set
-	 */
-	public void setStatusid(String statusid) {
-		this.statusid = statusid;
-	}
-
 	public String getSubmit() {
 		return submit;
 	}
 
 	public void setSubmit(String submit) {
 		this.submit = submit;
+	}
+	
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
 	}
 
 	public String getDelete() {
@@ -100,6 +110,14 @@ public class StatusForm extends ActionForm {
 
 	public void setDelete(String delete) {
 		this.delete = delete;
+	}
+
+	public String getUpdate() {
+		return update;
+	}
+
+	public void setUpdate(String update) {
+		this.update = update;
 	}
 
 }

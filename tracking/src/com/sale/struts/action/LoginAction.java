@@ -45,7 +45,7 @@ public class LoginAction extends Action {
 		
 		HttpSession session = request.getSession();
 		
-		String username, password, login = null;
+		String username, password, login = null, empname="";
 		
 		username = loginForm.getUsername();
 		password = request.getParameter("password");
@@ -55,8 +55,8 @@ public class LoginAction extends Action {
 		
 		
 		tbllogin tbl = new tbllogin();
-		
-		if(tblemp.employee_login(username, password)){
+		empname = tblemp.employee_login(username, password);
+		if(empname.equals("")){
 			session.setAttribute("username", username);
 			forwardText = "success";
 		}else{

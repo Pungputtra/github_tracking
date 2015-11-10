@@ -130,19 +130,33 @@ public class tbldetail {
 	}
 	
 	
-	public List select_detail(String cusid, String proid, String statusid){
+	public List select_detail(String cusid, String proid, String statusid, String username){
 		List detailList = new ArrayList();
 		
 		try {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "SELECT detail.id, customer.cusname, project.proname, status.statusname, detail.remark, detail.date, detail.username ";
+			String sqlQ = "SELECT detail.id, customer.cusname, customer.companame_th, project.proname, status.statusname, detail.remark, detail.date, employee.empname ";
 				   sqlQ += "FROM customer Inner Join detail ON customer.cusid = detail.cusid ";
 				   sqlQ += "Inner Join project ON project.proid = detail.proid ";
 				   sqlQ += "Inner Join status ON status.statusid = detail.statusid ";
-				   sqlQ += "where customer.cusid = '"+cusid+"' and  (project.proid = '"+proid+"' or status.statusid = '"+statusid+"')";
+				   sqlQ += "Inner Join employee ON employee.username = detail.username ";
+				   sqlQ += "where ";
+				   if(!cusid.equals("")){
+					   sqlQ += "customer.cusid = '"+cusid+"' and ";
+				   }
+				   if(!proid.equals("")){
+					   sqlQ += "project.proid = '"+proid+"' and ";
+				   }
+				   if(!statusid.equals("")){
+					   sqlQ += "status.statusid = '"+statusid+"' and ";
+				   }
+				   if(!username.equals("")){
+					   sqlQ += "employee.username = '"+username+"' and ";
+				   }
 				   
+				   sqlQ += "detail.id <> '' ";
 				   
 				   
 				   
@@ -152,7 +166,7 @@ public class tbldetail {
 			
 			while(rs.next()){
 								
-				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusname"), rs.getString("proname"), rs.getString("statusname"), rs.getString("remark"), rs.getString("date"), rs.getString("username")));
+				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusname"), rs.getString("companame_th"), rs.getString("proname"), rs.getString("statusname"), rs.getString("remark"), rs.getString("date"), rs.getString("empname")));
 				
 			}
 			

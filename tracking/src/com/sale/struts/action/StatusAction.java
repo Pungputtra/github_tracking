@@ -5,6 +5,7 @@
 package com.sale.struts.action;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,10 +16,12 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import java.util.*;
+
 import com.sale.struts.data.tblstatus;
 import com.sale.struts.form.StatusForm;
 
-/** 
+/**
  * MyEclipse Struts
  * Creation date: 10-19-2015
  * 
@@ -29,8 +32,8 @@ public class StatusAction extends Action {
 	/*
 	 * Generated Methods
 	 */
-
-	/** 
+	  
+	/**
 	 * Method execute
 	 * @param mapping
 	 * @param form
@@ -47,20 +50,30 @@ public class StatusAction extends Action {
 			return mapping.findForward("nologin");
 		}
 		
-		String statusid=null, statusname=null, submit=null, delete=null;
+		String statusid=null, statusname=null,
+		submit=null, search=null, delete=null, update=null;
 		
-		statusid = statusForm.getStatusid();
-		statusname = statusForm.getStatusid();
-		
-		submit = request.getParameter("submit");
-		delete = request.getParameter("delete");
+		try {
+			
+			statusid = statusForm.getStatusid();
+			statusname = new String (statusForm.getStatusname().getBytes("ISO8859_1"),"utf-8");
+			
+			
+			submit = request.getParameter("submit");
+			search = request.getParameter("search");
+			delete = request.getParameter("delete");
+			update = request.getParameter("update");
+			
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		
 		tblstatus tbls = new tblstatus();
 		
 		
 		if(submit != "" && submit != null){
-			
 			try {
 				tbls.insert_to_status(statusid, statusname);
 			} catch (Exception e) {
@@ -70,7 +83,29 @@ public class StatusAction extends Action {
 			
 			statusForm.setStatusid("");
 			statusForm.setStatusname("");
-	
+			
+			
+		}else if(search != "" && search != null){
+			String[] result = new String[2];
+			try {
+				
+				statusid = statusForm.getStatusid();
+				statusname = statusForm.getStatusname();
+				
+				result = tbls.select_from_status(statusid);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			statusForm.setStatusid(result[0]);
+			statusForm.setStatusname(result[1]);
+			
+		
 		}else if(delete != "" && delete != null){
 			try {
 				tbls.delete_from_status(statusid);
@@ -84,9 +119,22 @@ public class StatusAction extends Action {
 			
 			statusForm.setStatusid("");
 			statusForm.setStatusname("");
-	
+			
+			
+		}else if(update != "" && update != null){
+			try {
+				tbls.update_status(statusid, statusname);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			statusForm.setStatusid("");
+			statusForm.setStatusname("");
+					
 		}
 		
 		return mapping.findForward("success");
+		
 	}
 }

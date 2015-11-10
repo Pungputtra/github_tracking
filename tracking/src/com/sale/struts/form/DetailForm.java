@@ -47,7 +47,14 @@ public class DetailForm extends ActionForm {
 	private String showlist;
 	
 
-	private String cusname, proname, statusname;
+	private String cusname, proname, statusname, empname;
+	
+	private String companame_th;
+	
+	
+	private String getusername;
+	
+	private String username1;
 	
 	
 	private String project;
@@ -61,14 +68,15 @@ public class DetailForm extends ActionForm {
 	 */
 
 	public DetailForm(){}
-	public DetailForm(String id, String cusname, String proname, String statusname, String remark, String date, String username) {
+	public DetailForm(String id, String cusname, String companame_th, String proname, String statusname, String remark, String date, String empname) {
 		this.id = id;
 		this.cusname = cusname;
+		this.companame_th = companame_th;
 		this.proname = proname;
 		this.statusname = statusname;
 		this.remark = remark;
 		this.date = date;
-		this.username = username;
+		this.empname = empname;
 	}
 
 	/** 
@@ -244,6 +252,30 @@ public class DetailForm extends ActionForm {
 	}
 	public void setStatusname(String statusname) {
 		this.statusname = statusname;
+	}
+	public String getCompaname_th() {
+		return companame_th;
+	}
+	public void setCompaname_th(String companameTh) {
+		companame_th = companameTh;
+	}
+	public String getGetusername() {
+		return getusername;
+	}
+	public void setGetusername(String getusername) {
+		this.getusername = getusername;
+	}
+	public String getEmpname() {
+		return empname;
+	}
+	public void setEmpname(String empname) {
+		this.empname = empname;
+	}
+	public String getUsername1() {
+		return username1;
+	}
+	public void setUsername1(String username1) {
+		this.username1 = username1;
 	}
 
 	

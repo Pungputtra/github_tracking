@@ -75,10 +75,10 @@
 						</div>
   						
   						
-  						<div class="col-md-6">
+  						<div class="col-md-2">
   							<br/><html:submit styleClass="btn btn-default"  value="Get Project" property="search">Search</html:submit>
   						</div>
-						
+  							
 					</div><br/>
 					
 					
@@ -120,6 +120,15 @@
 								<html:option value="5">นัด present</html:option>
   							</html:select>
   						</div>
+  						
+  						
+  						<div class="col-md-3"><label>Username :</label>
+  						
+  							<html:text styleClass="form-control" property="username1">
+
+  							</html:text>
+  							
+						</div>
   						
 					</div><br/>
 					
@@ -165,11 +174,12 @@
 							<tr>
 								<th class="text-center">ID</th>
 								<th class="text-center">Customer Name</th>
+								<th class="text-center">Companyname Name</th>
 								<th class="text-center">Project Name</th>
 								<th class="text-center">Status Name</th>
 								<th class="text-center">Remark</th>
 								<th class="text-center">Date</th>
-								<th class="text-center">Username</th>
+								<th class="text-center">Employee Name</th>
 							</tr>
 						</thead>
 						
@@ -188,11 +198,12 @@
 							
 								<td><%=dtform.getId()%></td>
 								<td><%=dtform.getCusname()%></td>
+								<td><%=dtform.getCompaname_th()%></td>
 								<td><%=dtform.getProname()%></td>
 								<td><%=dtform.getStatusname()%></td>
 								<td><%=dtform.getRemark()%></td>
 								<td><%=dtform.getDate()%></td>
-								<td><%=dtform.getUsername()%></td>
+								<td><%=dtform.getEmpname()%></td>
 								
 							</tr>
 						</tbody>
