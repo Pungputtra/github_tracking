@@ -6,6 +6,9 @@
 	<head>
 		<title>JSP for EmployeeForm form</title>
 		
+		
+		<link rel="stylesheet" href="css/styles.css">
+		
 		<link rel="stylesheet" href="css/bootstrap.css" type="text/css"></link>
   		<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"></link>
   
@@ -59,7 +62,8 @@
 				</div><br/>
 				
 				<div class="row">
-				<div class="col-md-3"><label>Password :</label>
+				
+					<div class="col-md-3"><label>Password :</label>
   						<html:text styleClass="form-control" property="password"/><html:errors property="password"/>
   					</div>
   					</div><br/>
@@ -103,7 +107,7 @@
 			
 				<br>
 				<div class="row">
-					<div class="col-md-4 col-md-offset-5"> 
+					<div class="col-md-4 col-md-offset-4"> 
 						<button type ="submit" class="btn btn-default" value="INSERT" name="submit">
 						<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 						INSERT</button>
@@ -117,7 +121,7 @@
 						DELETE</button>	
 					</div>
 				</div>
-			
+			</div>
 		</html:form>
 		
 		</div>

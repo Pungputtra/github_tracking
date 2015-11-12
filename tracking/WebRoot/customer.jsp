@@ -76,8 +76,6 @@
 				
 				
 				<div class="row">
-  				
-  					
   					
   					<div class="col-md-4"><label>Position :</label>
   						<html:text styleClass="form-control" property="position"/><html:errors property="position"/>
