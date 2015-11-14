@@ -46,6 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  					<div class="container">
 			  				<a class="navbar-brand" href="index.jsp">Sales Tracking</a>
 			  				<p class="navbar-text navbar-right"><a href="logout.do" class="navbar-link">Logout</a></p>
+			  				<p class="navbar-text navbar-right"><a>Aumputtra</a></p>
 	  					</div>
 					</nav>
 	  	

@@ -27,31 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="js/bootstrap.js"></script>
  </head>
  <body>
- 		<style>
-	  		.navbar
-	  		{
-	  			margin-bottom: 0px;
-	  		}
-	  			.container{
-				width: 100%;
-				}
-		
-			body{
-				background-color : #cfe2f3;
-				}
-	  	</style>
-	  	
-	  	
-		  			<nav class="navbar navbar-inverse navbar-static-top">
-	  					<div class="container">
-			  				<a class="navbar-brand" href="index.jsp">Sales Tracking</a>
-			  				<p class="navbar-text navbar-right"><a href="logout.do" class="navbar-link">Logout</a></p>
-	  					</div>
-					</nav>
-	  	
-	  	
-	  		
-				
+ 		<%@ include file="menu.jsp"%>
 			<!-- Manu -->	
 			
  			<div class="container">
@@ -80,9 +56,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									
 												<a class="btn btn-primary " href="customer.jsp"> Customer <span class="glyphicon glyphicon-user"><br></span></a>
 							
-												<a class="btn btn-success " href="customer.jsp"> Employee <span class="glyphicon glyphicon-user"></span></a>
+												<a class="btn btn-success " href="detail.jsp">Detail <span class="glyphicon glyphicon-user"></span></a>
 							
-												<a class="btn btn-info " href="customer.jsp"> Projicet <span class="glyphicon glyphicon-user"></span></a>
+												<a class="btn btn-info " href="project.jsp"> Projicet <span class="glyphicon glyphicon-user"></span></a>
 											</div>
 										</div>
 									</div><br><br>

@@ -83,7 +83,7 @@
 						
 					<html:submit styleClass="pull-right btn btn-primary" value="Login" property="login">Login</html:submit>
 					<p><br/></p>
-
+					
 
 				</html:form>
 			

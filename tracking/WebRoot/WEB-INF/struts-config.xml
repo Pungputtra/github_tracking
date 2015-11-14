@@ -78,7 +78,7 @@
       scope="request"
       type="com.sale.struts.action.LoginAction">
       <set-property property="cancellable" value="true" />
-      <forward name="success" path="/customer.jsp" />
+      <forward name="success" path="/index.jsp" />
     </action>
     <action path="/logout" type="com.sale.struts.action.LogoutAction">
     

@@ -129,6 +129,10 @@ public class tbldetail {
 		conn.close();
 	}
 	
+
+	
+	
+	
 	
 	public List select_detail(String cusid, String proid, String statusid, String username){
 		List detailList = new ArrayList();
@@ -165,7 +169,7 @@ public class tbldetail {
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
-								
+												
 				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusid"), rs.getString("cusname"), rs.getString("companame_th"), rs.getString("proid"), rs.getString("proname"), rs.getString("statusid"), rs.getString("statusname"), rs.getString("remark"), rs.getString("date"), rs.getString("empname")));
 				
 			}
@@ -198,6 +202,7 @@ public class tbldetail {
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
+				
 								
 				customerList.add(new CustomerForm(rs.getString("cusid"), rs.getString("cusname")));
 				
