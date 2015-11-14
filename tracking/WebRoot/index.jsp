@@ -28,79 +28,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  </head>
  <body>
  		<%@ include file="menu.jsp"%>
-			<!-- Manu -->	
-			
+ 		
+ 		<br><br><br>
+ 		<div class="row">
+		  <div class="col-md-4">
+		  <!-- Navs -->
  			<div class="container">
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-1">
-	  		
-				  		<ul class="nav nav-pills">
-				  		
-				  			<li role="presentation"><a href="index.jsp">Home</a></li>
-				  			<li role="presentation"><a href="customer.jsp">Customer</a></li>
-				  			<li role="presentation"><a href="employee.jsp">Employee</a></li>
-				  			<li role="presentation"><a href="project.do">Project</a></li>
-				  			<li role="presentation"><a href="detail.do">Detail</a></li>
-				  			<li role="presentation"><a href="status.jsp">Status</a></li>
-						</ul>
-			
+                        <div class="col-md-4 ">
+	  						<ul class="nav nav-pills nav-stacked">
+					  			<li role="presentation"><a href="index.jsp">Home&nbsp;&nbsp;<span class="glyphicon glyphicon-home"><br></span></a></li>
+					  			<li role="presentation"><a href="customer.jsp">Customer&nbsp;&nbsp;<span class="glyphicon glyphicon-user"><br></span></a></li>
+					  			<li role="presentation"><a href="employee.jsp">Employee</a></li>
+					  			<li role="presentation"><a href="project.do">Project</a></li>
+					  			<li role="presentation"><a href="detail.do">Detail</a></li>
+					  			<li role="presentation"><a href="status.jsp">Status</a></li>
+							</ul>
 						</div>
     				</div>
     		</div>
-    		<!-- End Manu -->
-
-									<div class="container">
-										<div class="row">
-                       						<div class="col-md-4 col-md-offset-4">
-                       						<h1>Sales Tracking <small>ระบบติดตามการขาย</small></h1>
-									
-												<a class="btn btn-primary " href="customer.jsp"> Customer <span class="glyphicon glyphicon-user"><br></span></a>
-							
-												<a class="btn btn-success " href="detail.jsp">Detail <span class="glyphicon glyphicon-user"></span></a>
-							
-												<a class="btn btn-info " href="project.jsp"> Projicet <span class="glyphicon glyphicon-user"></span></a>
-											</div>
-										</div>
-									</div><br><br>
-									
-									<!-- Table Show List -->
+    		<!-- End Navs --></div>
+		  <div class="col-md-4">
+		  		<div class="container">
+					<div class="row">
+								<a class="btn btn-primary " href="customer.jsp"style="width:128px;height:128px;"> Customer <span class="glyphicon glyphicon-user"><br></span></a>&nbsp;&nbsp;
+								<a class="btn btn-success " href="detail.jsp"style="width:128px;height:128px;">Detail <span class="glyphicon glyphicon-user"><br></span></a>&nbsp;&nbsp;
+								<a class="btn btn-info " href="project.jsp"style="width:128px;height:128px;"> Projicet <span class="glyphicon glyphicon-book"><br></span></a>&nbsp;&nbsp;
+					</div>
+				</div>
+		</div><br><br></div>
+		</div>
+		
+ 									<!-- Table Show List -->
 									<div class="container">
 								  				<div class="col-md-6 col-md-offset-3">
 													<table class="table table-bordered">
 													    <thead>
 													        <tr>
-													            <th>#</th>
-													            
-													            <th>Employee</th>
-													            <th>Status</th>
+													            <th>No</th>
 													            <th>Projicet</th>
 													            <th>Customer</th>
+													            <th>Status</th>
+													            <th>Employee</th>
 													            <th>Datetime</th>
-													            
-													            
 													        </tr>
-													    </thead>
-													    <tbody>
-													        <tr>
-													           <td>1</td>
-													            <td>โทรครั้งเเรก</td>
-													            <td>nana</td>
-													            <td>man</td>
-													            <td>nana</td>
-													            <td>20/2/58</td>
-													        </tr>
-													        <tr>
-													            <td>2</td>
-													            <td>โทรครั้งที่2</td>
-													            <td>darune</td>
-													            <td>patth</td>
-													            <td>nana</td>
-													            <td>5/1/58</td>
-													        </tr>
-													        
-													    </tbody>
+													    </thead >
 													</table>
 									<!-- Table Show List -->
+									
 									
 									<!-- Address -->
 									<footer>
