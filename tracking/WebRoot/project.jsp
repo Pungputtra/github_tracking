@@ -111,9 +111,17 @@
 						<br>
 						<div class="row">
 							<div class="col-md-6">
-								<html:submit styleClass="btn btn-default" value="INSERT" property="submit">INSERT</html:submit>
-								<html:submit styleClass="btn btn-default" value="UPDATE" property="update">UPDATE</html:submit>
-								<html:submit styleClass="btn btn-default" value="DELETE" property="delete">DELETE</html:submit>
+								<button type ="submit" class="btn btn-default" value="INSERT" name="submit">
+								<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+								INSERT</button>
+								
+								<button type ="update" class="btn btn-default" value="UPDATE" name="update">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+								UPDATE</button>  
+								
+								<button type ="delete" class="btn btn-default"  value="DELETE" name="delete">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								DELETE</button>
 							</div>
 						</div>
 						
@@ -129,6 +137,8 @@
 				<!-- Table Show List -->
 				
 					<table class="table table-bordered">
+					
+					
 					
 						<thead>
 							<tr>
@@ -151,6 +161,12 @@
 								
 						<tbody>
 							<tr>
+							
+								<td><input type="radio" name="radio"
+									onclick="projectForm.proid.value='<%=pjform.getProid()%>';
+											projectForm.cusid.value='<%=pjform.getCusid()%>';
+											projectForm.proname.value='<%=pjform.getProname()%>;"/></td>
+							
 								<td><%=pjform.getProid()%></td>
 								<td><%=pjform.getProname()%></td>
 								<td><%=pjform.getCusid()%></td>

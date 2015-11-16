@@ -19,64 +19,89 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->	
 	
+	<link rel="stylesheet" href="css/styles.css" type="text/css"></link>
+	
 		<link rel="stylesheet" href="css/bootstrap.css" type="text/css"></link>
 		<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"></link>
 		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
+		
+		
+		
+		
+
+		
 	
   </head>
   
   
   <body>
   
-			  	<nav class="navbar navbar-info">
-			  	<div class="container-fluid">
-			    
-			    	<div class="navbar-header">
-			      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-			        		<span class="sr-only">Toggle navigation</span>
-			        		<span class="icon-bar"></span>
-			        		<span class="icon-bar"></span>
-			        		<span class="icon-bar"></span>
-			      		</button>
-			    <img src="img/CompanyLogo.jpg"width="100px" height="50px"></img>
-			    	</div>
-			
-			      
-					<ul class="nav navbar-nav navbar-right">
-			        	<li><a href="#">Username</a></li>
-			        	<li class="dropdown">
-			          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">logout <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-			            <li><a href="#">login</a></li>
-			       </ul>
-			       		</li>
-			      </ul>
-			      <div class="container">
-	  			<div class="col-md-6 col-md-offset-1">
+	  <style>
+	  	.navbar
+	  	{
+	  		margin-bottom: 0px;
+	  	}
+	  	.container{
+			width: 100%;
+		}
+		
+		body{
+			background-color : #DCDCDC;
+		}
+		
+	  	</style>
+	  	
+	  	<nav class="navbar navbar-inverse navbar-static-top">
+  			<div class="container">
+  				<a class="navbar-brand" href="index.jsp">Sales Tracking</a>
+  				<p class="navbar-text navbar-right"><a href="logout.do" class="navbar-link">Logout</a></p>
+  			</div>
+		</nav>
+		
+	
+				
+				<nav class="navbar navbar-default">
+				
+				<div class="container">
+	  			
+	  				<div class="col-md-6 col-md-offset-1">
 	  		
-			  		<ul class="nav nav-pills nav-justified">
-			  			<li role="presentation" class="active"><a href="index.jsp">Home</a></li>
-			  			<li role="presentation"><a href="customer.jsp">Customer</a></li>
-			  			<li role="presentation"><a href="employee.jsp">Employee</a></li>
-			  			<li role="presentation"><a href="project.do">Project</a></li>
-			  			<li role="presentation"><a href="detail.do">Detail</a></li>
-			  			<li role="presentation"><a href="status.jsp">Status</a></li>
-					</ul>
+				  		<ul class="nav nav-pills">
+				  			<li role="presentation"><a href="index.jsp">Home</a></li>
+				  			<li role="presentation"><a href="customer.jsp">Customer</a></li>
+				  			<li role="presentation"><a href="employee.jsp">Employee</a></li>
+				  			<li role="presentation"><a href="project.do">Project</a></li>
+				  			<li role="presentation"><a href="detail.do">Detail</a></li>
+				  			<li role="presentation"><a href="status.jsp">Status</a></li>
+						</ul>
 			
+					</div>
+				
 				</div>
-			</div>
-			    </div>
+				
+				
+				
+				
 			
-			</nav>
-			
-			
-			
-			
-			
-			
-			
+	
 			
   				
    </body>
+   
+   
+   <footer>
+   
+   		<nav class="navbar navbar-default navbar-fixed-bottom">
+  			<div class="container">
+  			
+  			Smart ICT Co.,Ltd.<br>
+			92/375 หมู่ที่ 5 ตำบลบางรักน้อย อำเภอเมืองนนทบุรี จังหวัดนนทบุรี 11000<br>
+			Tel: 02-926-1419 Phone: 082-7279850 E-mail: siriporn.s@smartict-th.com<br>
+   
+  			</div>
+		</nav>
+		
+   </footer>
+   
 </html>

@@ -63,10 +63,10 @@ public class ProjectAction extends Action {
 		
 		username = (String) session.getAttribute("username");
 		
-		submit = projectForm.getSubmit();
+		submit = request.getParameter("submit");
 		search = projectForm.getSearch();
-		delete = projectForm.getDelete();
-		update = projectForm.getUpdate();
+		delete = request.getParameter("delete");
+		update = request.getParameter("update");
 		
 		
 		
