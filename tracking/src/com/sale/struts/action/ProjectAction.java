@@ -72,10 +72,21 @@ public class ProjectAction extends Action {
 		
 		tblproject tbl = new tblproject();
 		tblproject tblp = new tblproject();
+		tblcustomer tblc = new tblcustomer();
 		
 		
 		
 		if(submit != "" && submit != null){
+			
+			try {
+				proname = new String(projectForm.getProname().getBytes("ISO8859_1"),"utf-8");
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			
 			try {
 				tblp.insert_to_project(proname, cusid, username);
 			} catch (Exception e) {
@@ -88,6 +99,13 @@ public class ProjectAction extends Action {
 			projectForm.setCusid("");
 			
 			
+			List projectlist = tblp.select_project(cusid);
+			List customerlist = tblc.select_customer("");
+			
+			request.setAttribute("projectlist", projectlist);
+			request.setAttribute("customerlist", customerlist);
+			
+			
 			
 		}else if(search != "" && search != null){
 			String[] result = new String[4];
@@ -96,7 +114,7 @@ public class ProjectAction extends Action {
 			
 			try {
 				
-				tblcustomer tblc = new tblcustomer();
+				
 				
 				projectlist = tblp.select_project(cusid);
 				customerlist = tblc.select_customer("");
@@ -133,6 +151,13 @@ public class ProjectAction extends Action {
 			projectForm.setCusid("");
 			
 			
+			List projectlist = tblp.select_project(cusid);
+			List customerlist = tblc.select_customer("");
+			
+			request.setAttribute("projectlist", projectlist);
+			request.setAttribute("customerlist", customerlist);
+			
+			
 		}else if(update != "" && update != null){
 			try {
 				tblp.update_project(proid, proname, cusid);
@@ -141,9 +166,16 @@ public class ProjectAction extends Action {
 				e.printStackTrace();
 			}
 			
-			projectForm.setProid("");
-			projectForm.setProname("");
-			projectForm.setCusid("");
+//			projectForm.setProid("");
+//			projectForm.setProname("");
+//			projectForm.setCusid("");
+			
+			
+			List projectlist = tblp.select_project(cusid);
+			List customerlist = tblc.select_customer("");
+			
+			request.setAttribute("projectlist", projectlist);
+			request.setAttribute("customerlist", customerlist);
 					
 		
 		}else{
@@ -152,7 +184,7 @@ public class ProjectAction extends Action {
 			
 			try {
 				
-				tblcustomer tblc = new tblcustomer();
+				
 				customerlist = tblc.select_customer("");
 				
 			} catch (Exception e) {

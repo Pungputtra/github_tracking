@@ -19,7 +19,7 @@
 	}
 	
 	body{
-		background-color : #DCDCDC;
+		background-color : #cfe2f3;
 	}
 	
   	</style>
@@ -28,7 +28,7 @@
   	
   	<!-- Navbar -->
   	
-  		<nav class="navbar navbar-static-top" style="background-color: #B0C4DE;">
+  		<nav class="navbar navbar-inverse navbar-static-top">
   			<div class="container">
   				<a class="navbar-brand" href="index.jsp">Sales Tracking</a>
   				<p class="navbar-text navbar-right"><a href="logout.do" class="navbar-link">Logout</a></p>

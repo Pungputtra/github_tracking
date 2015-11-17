@@ -17,12 +17,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import java.util.*;
+
 import com.sale.struts.form.DetailForm;
 import com.sale.struts.form.CustomerForm;
+
 import com.sale.struts.data.tbldetail;
 import com.sale.struts.data.tblcustomer;
 import com.sale.struts.data.tblproject;
-
 
 
 /**
@@ -58,35 +59,62 @@ public class DetailAction extends Action {
 		
 		String id="", cusid="", proid="", statusid="", remark="", date="", username="", username1="", submit="", search="", delete="", showlist="";
 		
-		id = detailForm.getId();
-		cusid = detailForm.getCusid();
-		proid = detailForm.getProid();
-		statusid = detailForm.getStatus();
-		remark = detailForm.getRemark();
-		date = detailForm.getDate();
-		username1 = detailForm.getUsername1();
-		
-		username = (String)session.getAttribute("username");
 		
 		
-		submit = request.getParameter("submit");
-		search = detailForm.getSearch();
-		delete = request.getParameter("delete");
-		showlist = request.getParameter("showlist");
+		
+			id = detailForm.getId();
+			cusid = detailForm.getCusid();
+			proid = detailForm.getProid();
+			statusid = detailForm.getStatus();
+			remark = detailForm.getRemark();
+			date = detailForm.getDate();
+			
+			username = (String)session.getAttribute("username");
+			
+			username1 = detailForm.getUsername1();
+			
+			
+			submit = request.getParameter("submit");
+			search = detailForm.getSearch();
+			delete = request.getParameter("delete");
+			showlist = request.getParameter("showlist");
 		
 		
-		tbldetail tbl = new tbldetail();
+		
+		
+		tbldetail tbld = new tbldetail();
+		tblcustomer tblc = new tblcustomer();
 		tblproject tblp = new tblproject();
 		
 		
-		if(submit != "" && submit != null){
+		if(submit != "" && submit != null){ 
 			
 			try {
-				tbl.insert_to_detail(cusid, proid, statusid, remark, date, username);
-			} catch (Exception e) {
+				remark = new String(detailForm.getRemark().getBytes("ISO8859_1"),"utf-8");
+			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			try {
+				tbld.insert_to_detail(cusid, proid, statusid, remark, date, username);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+			
+			
+			List customerlist = tblc.select_customer("");
+			List projectlist = tblp.select_project(cusid);
+			
+			List detaillist = tbld.select_detail(cusid, proid, statusid, username1);
+			
+			
+			request.setAttribute("customerlist", customerlist);
+			request.setAttribute("projectlist", projectlist);
+			
+			request.setAttribute("detaillist", detaillist);
+			
 			
 			detailForm.setCusid("");
 			detailForm.setProid("");
@@ -103,18 +131,16 @@ public class DetailAction extends Action {
 			
 			try {
 				
-				tblcustomer tblc = new tblcustomer();
-				
-				projectlist = tblp.select_project(cusid);
 				customerlist = tblc.select_customer("");
+				projectlist = tblp.select_project(cusid);
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			request.setAttribute("projectlist", projectlist);
+						
 			request.setAttribute("customerlist", customerlist);
+			request.setAttribute("projectlist", projectlist);
 			
 			
 //			detailForm.setId(result[0]);
@@ -129,7 +155,7 @@ public class DetailAction extends Action {
 		}else if(delete != "" && delete != null){
 			
 			try {
-				tbl.delete_from_detail(id);
+				tbld.delete_from_detail(id);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -147,13 +173,26 @@ public class DetailAction extends Action {
 			detailForm.setUsername("");
 			
 			
+			List projectlist = tblp.select_project(cusid);
+			List customerlist = tblc.select_customer("");
+			
+			
+			
+			
+			request.setAttribute("projectlist", projectlist);
+			request.setAttribute("customerlist", customerlist);
+			
+			
+			
+			
+			
+			
 		}else if(showlist != "" && showlist != null){
 			String[] result = new String[7];
 			List detaillist = null;
 			
 			try {
 				
-				tbldetail tbld = new tbldetail();
 				detaillist = tbld.select_detail(cusid, proid, statusid, username1);
 				
 			}  catch (Exception e) {
@@ -161,25 +200,31 @@ public class DetailAction extends Action {
 				e.printStackTrace();
 			}
 			
+//			detailForm.setId(result[0]);
+//			detailForm.setCusid(result[1]);
+//			detailForm.setProid(result[2]);
+//			detailForm.setStatusid(result[3]);
+//			detailForm.setRemark(result[4]);
+//			detailForm.setDate(result[5]);
+//			detailForm.setUsername(result[6]);
+			
+			
+			List projectlist = tblp.select_project(cusid);
+			List customerlist = tblc.select_customer("");
+			
+		
+			request.setAttribute("projectlist", projectlist);
+			request.setAttribute("customerlist", customerlist);
+			
 			request.setAttribute("detaillist", detaillist);
 			
-			
-			detailForm.setId(result[0]);
-			detailForm.setCusid(result[1]);
-			detailForm.setProid(result[2]);
-			detailForm.setStatusid(result[3]);
-			detailForm.setRemark(result[4]);
-			detailForm.setDate(result[5]);
-			detailForm.setUsername(result[6]);
-			
-			
+	
 		}else{
 			String[] result = new String[7];
 			List customerlist = null;
 			
 			try {
 				
-				tblcustomer tblc = new tblcustomer();
 				customerlist = tblc.select_customer("");
 				
 			} catch (Exception e) {

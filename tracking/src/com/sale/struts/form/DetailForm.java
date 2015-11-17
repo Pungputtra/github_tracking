@@ -68,11 +68,14 @@ public class DetailForm extends ActionForm {
 	 */
 
 	public DetailForm(){}
-	public DetailForm(String id, String cusname, String companame_th, String proname, String statusname, String remark, String date, String empname) {
+	public DetailForm(String id, String cusid, String cusname, String companame_th, String proid, String proname, String statusid, String statusname, String remark, String date, String empname) {
 		this.id = id;
+		this.cusid = cusid;
 		this.cusname = cusname;
 		this.companame_th = companame_th;
+		this.proid = proid;
 		this.proname = proname;
+		this.statusid = statusid;
 		this.statusname = statusname;
 		this.remark = remark;
 		this.date = date;

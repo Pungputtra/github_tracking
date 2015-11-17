@@ -141,7 +141,8 @@
 					
 					
 						<thead>
-							<tr>
+							<tr class="active">
+								<th class="text-center">No</th>
 								<th class="text-center">Project ID</th>
 								<th class="text-center">Project Name</th>
 								<th class="text-center">Customer ID</th>
@@ -154,6 +155,8 @@
 									List projectlist = (List)request.getAttribute("projectlist");
 									Iterator iter = projectlist.iterator();
 									
+									int i=1;
+									
 									while(iter.hasNext())
 									{
 										ProjectForm pjform = (ProjectForm) iter.next();
@@ -162,15 +165,19 @@
 						<tbody>
 							<tr>
 							
-								<td><input type="radio" name="radio"
+								<td class="active">
+								<input type="radio" name="radio"
 									onclick="projectForm.proid.value='<%=pjform.getProid()%>';
 											projectForm.cusid.value='<%=pjform.getCusid()%>';
-											projectForm.proname.value='<%=pjform.getProname()%>;"/></td>
+											projectForm.proname.value='<%=pjform.getProname()%>';"/>&nbsp;&nbsp;<%=i++%>
+											
+								</td>
 							
-								<td><%=pjform.getProid()%></td>
-								<td><%=pjform.getProname()%></td>
-								<td><%=pjform.getCusid()%></td>
-								<td><%=pjform.getCusname()%></td>
+								<td class="active"><%=pjform.getProid()%></td>
+								<td class="active"><%=pjform.getProname()%></td>
+								<td class="active"><%=pjform.getCusid()%></td>
+								<td class="active"><%=pjform.getCusname()%></td>
+								
 								
 								
 							</tr>

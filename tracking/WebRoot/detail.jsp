@@ -47,6 +47,22 @@
 		
 				<div class="container">
 				
+				
+					<div class="row">
+					
+					<!-- Hidden id -->
+					
+	  					<div class="col-md-2"><label></label>
+	  					
+	  						<html:hidden styleClass="form-control" property="id"/>
+	  						
+	  					</div>
+	  					
+	  				<!-- Hidden id -->
+	  				
+					</div><br/>
+				
+				
 					<div class="row">
   					
   						<div class="col-md-3"><label>Customer Name :</label>
@@ -171,7 +187,8 @@
 					<table class="table table-bordered">
 					
 						<thead>
-							<tr>
+							<tr class="active">
+								<th class="text-center">No</th>
 								<th class="text-center">ID</th>
 								<th class="text-center">Customer Name</th>
 								<th class="text-center">Companyname Name</th>
@@ -188,6 +205,8 @@
 									List detaillist = (List)request.getAttribute("detaillist");
 									Iterator iter = detaillist.iterator();
 									
+									int i=1;
+									
 									while(iter.hasNext())
 									{
 										DetailForm dtform = (DetailForm) iter.next();
@@ -196,14 +215,25 @@
 						<tbody>
 							<tr>
 							
-								<td><%=dtform.getId()%></td>
-								<td><%=dtform.getCusname()%></td>
-								<td><%=dtform.getCompaname_th()%></td>
-								<td><%=dtform.getProname()%></td>
-								<td><%=dtform.getStatusname()%></td>
-								<td><%=dtform.getRemark()%></td>
-								<td><%=dtform.getDate()%></td>
-								<td><%=dtform.getEmpname()%></td>
+								<td class="active">
+								<input type="radio" name="radio"
+									onclick="detailForm.id.value='<%=dtform.getId()%>';
+											detailForm.cusid.value='<%=dtform.getCusid()%>';
+											detailForm.proid.value='<%=dtform.getProid()%>';
+											detailForm.status.value='<%=dtform.getStatusid()%>';
+											detailForm.username1.value='<%=dtform.getEmpname()%>';
+											detailForm.remark.value='<%=dtform.getRemark()%>';"/><%=i++%>
+											
+								</td>
+							
+								<td class="active"><%=dtform.getId()%></td>
+								<td class="active"><%=dtform.getCusname()%></td>
+								<td class="active"><%=dtform.getCompaname_th()%></td>
+								<td class="active"><%=dtform.getProname()%></td>
+								<td class="active"><%=dtform.getStatusname()%></td>
+								<td class="active"><%=dtform.getRemark()%></td>
+								<td class="active"><%=dtform.getDate()%></td>
+								<td class="active"><%=dtform.getEmpname()%></td>
 								
 							</tr>
 						</tbody>

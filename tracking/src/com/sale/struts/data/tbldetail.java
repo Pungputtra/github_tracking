@@ -137,7 +137,7 @@ public class tbldetail {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "SELECT detail.id, customer.cusname, customer.companame_th, project.proname, status.statusname, detail.remark, detail.date, employee.empname ";
+			String sqlQ = "SELECT detail.id, customer.cusid, customer.cusname, customer.companame_th, project.proid, project.proname, status.statusid, status.statusname, detail.remark, detail.date, employee.empname ";
 				   sqlQ += "FROM customer Inner Join detail ON customer.cusid = detail.cusid ";
 				   sqlQ += "Inner Join project ON project.proid = detail.proid ";
 				   sqlQ += "Inner Join status ON status.statusid = detail.statusid ";
@@ -166,7 +166,7 @@ public class tbldetail {
 			
 			while(rs.next()){
 								
-				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusname"), rs.getString("companame_th"), rs.getString("proname"), rs.getString("statusname"), rs.getString("remark"), rs.getString("date"), rs.getString("empname")));
+				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusid"), rs.getString("cusname"), rs.getString("companame_th"), rs.getString("proid"), rs.getString("proname"), rs.getString("statusid"), rs.getString("statusname"), rs.getString("remark"), rs.getString("date"), rs.getString("empname")));
 				
 			}
 			
