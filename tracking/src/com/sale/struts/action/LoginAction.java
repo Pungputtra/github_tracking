@@ -56,7 +56,7 @@ public class LoginAction extends Action {
 		
 		tbllogin tbl = new tbllogin();
 		empname = tblemp.employee_login(username, password);
-		if(empname.equals("")){
+		if(!empname.equals("")){
 			session.setAttribute("username", username);
 			forwardText = "success";
 		}else{
