@@ -172,8 +172,11 @@ public class DetailAction extends Action {
 			detailForm.setDate("");
 			detailForm.setUsername("");
 			
+			detailForm.setUsername1("");
+			detailForm.setStatus("");
 			
-			List detaillist = tbld.select_detail(cusid, proid, statusid, username1);
+			
+			List detaillist = tbld.select_detail1(cusid, proid);
 			List customerlist = tblc.select_customer("");
 			
 			request.setAttribute("detaillist", detaillist);

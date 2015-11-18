@@ -79,7 +79,7 @@ public class CustomerAction extends Action {
 				
 				status = customerForm.getStatus();
 				
-				tbl.insert_to_customer(cusid, companame_en, companame_th, cusname, position, mail, address, tel08, tel02, fax);
+				tbl.insert_to_customer(companame_en, companame_th, cusname, position, mail, address, tel08, tel02, fax);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -51,31 +51,34 @@ public class StatusAction extends Action {
 		}
 		
 		String statusid=null, statusname=null,
-		submit=null, search=null, delete=null, update=null;
+		submit=null, search=null, delete=null, update=null, showstatus=null;
 		
-		try {
-			
-			statusid = statusForm.getStatusid();
-			statusname = new String (statusForm.getStatusname().getBytes("ISO8859_1"),"utf-8");
-			
-			
-			submit = request.getParameter("submit");
-			search = request.getParameter("search");
-			delete = request.getParameter("delete");
-			update = request.getParameter("update");
-			
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		statusid = statusForm.getStatusid();
+		
+		
+		
+		submit = request.getParameter("submit");
+		search = request.getParameter("search");
+		delete = request.getParameter("delete");
+		update = request.getParameter("update");
+		
+		showstatus = request.getParameter("showstatus");
 		
 		
 		tblstatus tbls = new tblstatus();
 		
 		
 		if(submit != "" && submit != null){
+			
 			try {
-				tbls.insert_to_status(statusid, statusname);
+				statusname = new String (statusForm.getStatusname().getBytes("ISO8859_1"),"utf-8");
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			try {
+				tbls.insert_to_status(statusname);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -83,6 +86,10 @@ public class StatusAction extends Action {
 			
 			statusForm.setStatusid("");
 			statusForm.setStatusname("");
+			
+			List statuslist = tbls.select_status(statusid, statusname);
+			
+			request.setAttribute("statuslist", statuslist);
 			
 			
 		}else if(search != "" && search != null){
@@ -121,7 +128,20 @@ public class StatusAction extends Action {
 			statusForm.setStatusname("");
 			
 			
+			List statuslist = tbls.select_status(statusid, statusname);
+			
+			request.setAttribute("statuslist", statuslist);
+			
+			
 		}else if(update != "" && update != null){
+			
+			try {
+				statusname = new String (statusForm.getStatusname().getBytes("ISO8859_1"),"utf-8");
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			try {
 				tbls.update_status(statusid, statusname);
 			} catch (Exception e) {
@@ -131,7 +151,35 @@ public class StatusAction extends Action {
 			
 			statusForm.setStatusid("");
 			statusForm.setStatusname("");
-					
+			
+			List statuslist = tbls.select_status(statusid, statusname);
+			
+			request.setAttribute("statuslist", statuslist);
+		
+			
+		}else if(showstatus != "" && showstatus != null){
+			String[] result = new String[2];
+			List statuslist = null;
+			
+			try {
+				
+				statuslist = tbls.select_status(statusid, statusname);
+				
+			}  catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+//			statusForm.setStatusid(result[0]);
+//			statusForm.setStatusname(result[1]);
+
+			
+			
+			
+			
+			request.setAttribute("statuslist", statuslist);
+			
+	
 		}
 		
 		return mapping.findForward("success");

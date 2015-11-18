@@ -5,7 +5,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.sale.struts.data.DBConnect;
+import com.sale.struts.form.DetailForm;
+import com.sale.struts.form.StatusForm;
 
 public class tblstatus {
 
@@ -14,12 +19,11 @@ public class tblstatus {
 	Statement pStmt = null;
 	ResultSet rs = null;
 	
-	public void insert_to_status(String statusid,
-			String statusname)throws Exception{
+	public void insert_to_status(String statusname)throws Exception{
 			
 		conn = agent.getConnectMYSql();
 		
-		String sqlQuery = "insert into status value('"+statusid+"','"+statusname+"')";
+		String sqlQuery = "insert into status(statusname) value('"+statusname+"')";
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlQuery);
 		
@@ -76,5 +80,42 @@ public class tblstatus {
 			conn.close();
 			
 	}
+	
+	
+	public List select_status(String statusid, String statusname){
+		
+		List statusList = new ArrayList();
+		
+		try {
+			
+			conn = agent.getConnectMYSql();
+			
+			String sqlQ = "select * from status";
+				   
+	
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlQ);
+			
+			while(rs.next()){
+								
+				statusList.add(new StatusForm(rs.getString("statusid"), rs.getString("statusname")));
+				
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return statusList;
+	}
+		
+	
+	
+	
+	}
 
-}
+

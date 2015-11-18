@@ -31,9 +31,19 @@ public class StatusForm extends ActionForm {
 	
 	private String submit, search, delete, update;
 	
+	private String showstatus;
+	
 	/*
 	 * Generated Methods
 	 */
+	
+
+	public StatusForm(){}
+	public StatusForm(String statusid, String statusname) {
+		this.statusid = statusid;
+		this.statusname = statusname;
+		
+	}
 
 	/** 
 	 * Method validate
@@ -118,6 +128,12 @@ public class StatusForm extends ActionForm {
 
 	public void setUpdate(String update) {
 		this.update = update;
+	}
+	public String getShowstatus() {
+		return showstatus;
+	}
+	public void setShowstatus(String showstatus) {
+		this.showstatus = showstatus;
 	}
 
 }

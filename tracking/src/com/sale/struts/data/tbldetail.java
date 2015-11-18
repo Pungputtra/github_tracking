@@ -134,6 +134,53 @@ public class tbldetail {
 	
 	
 	
+	public List select_detail1(String cusid, String proid){
+		List detailList = new ArrayList();
+		
+		try {
+			
+			conn = agent.getConnectMYSql();
+			
+			String sqlQ = "SELECT detail.id, customer.cusid, customer.cusname, customer.companame_th, project.proid, project.proname, status.statusid, status.statusname, detail.remark, detail.date, employee.empname ";
+			   sqlQ += "FROM customer Inner Join detail ON customer.cusid = detail.cusid ";
+			   sqlQ += "Inner Join project ON project.proid = detail.proid ";
+			   sqlQ += "Inner Join status ON status.statusid = detail.statusid ";
+			   sqlQ += "Inner Join employee ON employee.username = detail.username ";
+			   sqlQ += "where ";
+			   if(!cusid.equals("")){
+				   sqlQ += "customer.cusid = '"+cusid+"' and ";
+			   }
+			   if(!proid.equals("")){
+				   sqlQ += "project.proid = '"+proid+"' and ";
+			   }
+			   
+			   sqlQ += "detail.id <> '' ";
+			   
+			   
+			   pStmt = conn.createStatement();
+			   rs = pStmt.executeQuery(sqlQ);
+			   
+			   
+			   while(rs.next()){
+					
+					detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusid"), rs.getString("cusname"), rs.getString("companame_th"), rs.getString("proid"), rs.getString("proname"), rs.getString("statusid"), rs.getString("statusname"), rs.getString("remark"), rs.getString("date"), rs.getString("empname")));
+					
+				}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return detailList;
+		
+	}
+	
+	
 	public List select_detail(String cusid, String proid, String statusid, String username){
 		List detailList = new ArrayList();
 		

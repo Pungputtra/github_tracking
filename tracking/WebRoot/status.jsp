@@ -1,4 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+
+<%@ page import="com.sale.struts.form.StatusForm"%>
+<%@ page import = "java.util.*" %>
+
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 
@@ -43,18 +47,18 @@
 				<div class="container">
 				
 					<div class="row">
-  					
-  						<div class="col-md-2"><label>Status ID :</label>
-  							<html:text styleClass="form-control" property="statusid"/>
-  						</div>
-  						
-  						
-  						<div class="col-md-4">
-  							<br/><button type ="search" class="btn btn-default" value="Search" name="search">
-  							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-  							Search</button>
+					
+					
+					<!-- Hidden Proid -->
+					
+	  					<div class="col-md-2"><label></label>
+	  					
+  							<html:hidden styleClass="form-control" property="statusid"/>
   							
-  						</div><br>
+  						</div>
+	  					
+	  				<!-- Hidden Proid -->
+					
   					</div><br/>
   					
   					
@@ -62,6 +66,12 @@
   						<div class="col-md-4"><label>Status Name :</label>
   							<html:text styleClass="form-control" property="statusname"/>
   						</div>
+  						
+  						<br>
+  						<button type="showstatus" class="btn btn-default" value="Show Status" name="showstatus">
+						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+						SHOW&nbsp;STATUS</button>
+						
   					</div>
   					
   					
@@ -81,7 +91,77 @@
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 						DELETE</button>
 						
+						
+						
 					</div>
+					
+				</div>
+				
+				
+				<br><br>
+				<div class="col-md-12">
+				
+				<!-- Table Show List -->
+				
+					<table class="table table-bordered">
+					
+						<thead>
+							<tr class="active">
+								<th class="text-center">No</th>
+								<th class="text-center">StatusID</th>
+								<th class="text-center">Status Name</th>
+							</tr>
+						</thead>
+						
+								<% if(request.getAttribute("statuslist") != null)
+								{
+									List statuslist = (List)request.getAttribute("statuslist");
+									Iterator iter = statuslist.iterator();
+									
+									int i=1;
+									
+									while(iter.hasNext())
+									{
+										StatusForm stform = (StatusForm) iter.next();
+								%>
+								
+						<tbody>
+							<tr>
+							
+								<td class="active">
+								<input type="radio" name="radio"
+									onclick="statusForm.statusid.value='<%=stform.getStatusid()%>';
+											statusForm.statusname.value='<%=stform.getStatusname()%>';"/>&nbsp;&nbsp;<%=i++%>
+											
+											
+											
+								</td>
+							
+								<td class="active"><%=stform.getStatusid()%></td>
+								<td class="active"><%=stform.getStatusname()%></td>
+																
+							</tr>
+						</tbody>
+						
+								<%
+									}
+									
+								}else{
+								%>
+								
+						<tbody>
+							<tr>
+								<td colspan="12" align="center">not found</td>		
+							</tr>
+						</tbody>
+						
+							<%
+							}
+							%>
+							
+					</table>
+					
+					<!-- End Table Show List -->
 					
 				</div>
 				

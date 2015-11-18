@@ -17,8 +17,7 @@ public class tblcustomer {
 	Statement pStmt = null;
 	ResultSet rs = null;
 	
-	public void insert_to_customer(String cusid, 
-			String companame_en, 
+	public void insert_to_customer(String companame_en, 
 			String companame_th,
 			String cusname, 
 			String position,
@@ -30,7 +29,9 @@ public class tblcustomer {
 		
 		conn = agent.getConnectMYSql();
 		
-		String sqlQuery = "insert into customer value('"+cusid+"','"+companame_en+"','"+companame_th+"','"+cusname+"','"+position+"','"+mail+"','"+address+"','"+tel08+"','"+tel02+"','"+fax+"')";
+		
+		
+		String sqlQuery = "insert into customer(companame_en, companame_th, cusname, position, mail, address, tel08, tel02, fax) value('"+companame_en+"','"+companame_th+"','"+cusname+"','"+position+"','"+mail+"','"+address+"','"+tel08+"','"+tel02+"','"+fax+"')";
 		pStmt = conn.createStatement();
 		pStmt.executeUpdate(sqlQuery);
 		
