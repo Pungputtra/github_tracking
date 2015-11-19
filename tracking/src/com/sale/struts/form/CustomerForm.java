@@ -62,10 +62,41 @@ public class CustomerForm extends ActionForm {
 	
 	public CustomerForm(){}
 	public CustomerForm(String s1, String s2) {
+		
 		this.cusid = s1;
 		this.cusname = s2;
+		
+		
+		
 	}
+	
+	
+	
 
+	public CustomerForm(String cusid, 
+			String companame_en,
+			String companame_th,
+			String cusname,
+			String position,
+			String mail,
+			String address,
+			String tel08,
+			String tel02,
+			String fax) {
+		
+			this.cusid = cusid;
+			this.companame_en = companame_en;
+			this.companame_th = companame_th;
+			this.cusname = cusname;
+			this.position = position;
+			this.mail = mail;
+			this.address = address;
+			this.tel08 = tel08;
+			this.tel02 = tel02;
+			this.fax = fax;
+		
+		// TODO Auto-generated constructor stub
+	}
 	/** 
 	 * Method validate
 	 * @param mapping

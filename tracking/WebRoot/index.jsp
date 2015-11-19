@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="com.sale.struts.form.CustomerForm"%>
+<%@page import="com.sale.struts.data.DBIndex"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,7 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"></link>
 		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
- </head>
+ <link rel="stylesheet" href="css/jquery.dataTables.min.css" type="text/css"></link>
+ <script type="text/javascript" src="js/jquery.dataTables.min.js"></script></head>
  <body>
  		<%@ include file="menu.jsp"%>
  		
@@ -59,43 +62,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div><br><br></div>
 		</div>
 		
- 									<!-- Table Show List -->
-									<div class="container">
-								  				<div class="col-md-6 col-md-offset-3">
-													<table class="table table-bordered">
-													    <thead>
-													        <tr>
-													            <th>No</th>
-													            <th>Projicet</th>
-													            <th>Customer</th>
-													            <th>Status</th>
-													            <th>Employee</th>
-													            <th>Datetime</th>
-													        </tr>
-													    </thead >
-													</table>
-									<!-- Table Show List -->
+ 			
+ 			
+ 			
+ 			
+ 			
+ 			<div class="col-md-12">
+				
+				<!-- Table Show List -->
+				
+					<table id="customertable" class="table table-bordered display">
+						
+						<thead>
+							<tr class="active">
+								<th class="text-center">Customer ID</th>
+								<th class="text-center">Company Name_en</th>
+								<th class="text-center">company Name_th</th>
+								<th class="text-center">Customer Name</th>
+								<th class="text-center">Position</th>
+								<th class="text-center">Mail</th>
+								<th class="text-center">Address</th>
+								<th class="text-center">Tel08</th>
+								<th class="text-center">Tel02</th>
+								<th class="text-center">Fax</th>
+							</tr>
+						</thead>
+						<tbody>
+								<% ListIterator<?> indexDetail = null;
+									DBIndex dbindex = new DBIndex();
+									indexDetail = dbindex.select_customer().listIterator();
 									
 									
-									<!-- Address -->
-									<footer>
-   
-								   		<nav class="navbar navbar-fixed-bottom">
-								  			<div class="container">
-								  				<div class="col-md-5">
-								  			
-								  			Smart ICT Co.,Ltd.<br>
-											92/375 หมู่ที่ 5 ตำบลบางรักน้อย อำเภอเมืองนนทบุรี จังหวัดนนทบุรี 11000<br>
-											Tel: 02-926-1419 Phone: 082-7279850 E-mail: siriporn.s@smartict-th.com<br>
-								   
-								  				</div>
-								  			</div>
-										</nav>
-		
-   									</footer>
-									<!--End Address -->
+									
+									
+									while(indexDetail.hasNext())
+									{
+										CustomerForm cmform = (CustomerForm) indexDetail.next();
+								%>
+								
+						
+							<tr>
+								<td class="active"><%=cmform.getCusid()%></td>
+								<td class="active"><%=cmform.getCompaname_en()%></td>
+								<td class="active"><%=cmform.getCompaname_th()%></td>
+								<td class="active"><%=cmform.getCusname()%></td>
+								<td class="active"><%=cmform.getPosition()%></td>
+								<td class="active"><%=cmform.getMail()%></td>
+								<td class="active"><%=cmform.getAddress()%></td>
+								<td class="active"><%=cmform.getTel08()%></td>
+								<td class="active"><%=cmform.getTel02()%></td>
+								<td class="active"><%=cmform.getFax()%></td>
+																
+							</tr>
+						
+						
+								<%
+									}
+								%>
+							</tbody>
+					</table>
+					
+					<!-- End Table Show List -->
+					
+				</div>
 									
 									
  </body>
+ <script type="text/javascript">
+ $(document).ready(function() {
+    $('#customertable').DataTable();
+} );
+ </script>
  </html>
  
