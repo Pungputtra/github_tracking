@@ -10,6 +10,7 @@
     <form-bean name="projectForm" type="com.sale.struts.form.ProjectForm" />
     <form-bean name="statusForm" type="com.sale.struts.form.StatusForm" />
     <form-bean name="loginForm" type="com.sale.struts.form.LoginForm" />
+    <form-bean name="reportForm" type="com.sale.struts.form.ReportForm" />
 
   </form-beans>
 
@@ -84,6 +85,17 @@
     
       <set-property property="cancellable" value="true" />
       <forward name="logout" path="/login.jsp" />
+    </action>
+    <action
+      attribute="reportForm"
+      input="/form/report.jsp"
+      name="reportForm"
+      path="/report"
+      scope="request"
+      type="com.sale.struts.action.ReportAction">
+      <set-property property="cancellable" value="true" />
+      <forward name="success" path="/form/report.jsp" />
+      
     </action>
 
   </action-mappings>
