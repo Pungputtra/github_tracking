@@ -10,7 +10,9 @@ import java.util.List;
 import sun.java2d.loops.CustomComponent;
 
 import com.sale.struts.form.CustomerForm;
-import com.sale.struts.form.StatusForm;
+import com.sale.struts.form.DetailForm;
+import com.sale.struts.form.ProjectForm;
+
 
 public class DBIndex {
 
@@ -46,7 +48,73 @@ public class DBIndex {
 			e.printStackTrace();
 		}
 		
-		return customerList;}
+		return customerList;
+		
+	}
+	
+	
+	public List select_detail(){
+		
+		List detailList = new ArrayList();
+		
+		try {
+			
+			conn = agent.getConnectMYSql();
+			
+			String sqlQ = "select * from detail";
+			
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlQ);
+			
+			while(rs.next()){
+				
+				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusid"), rs.getString("proid"), rs.getString("statusid"), rs.getString("remark"), rs.getString("date"), rs.getString("username")));
+				
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return detailList;
+		
+	}
+	
+	
+	public List select_project(){
+		
+		List projectList = new ArrayList();
+		
+		try {
+			
+			conn = agent.getConnectMYSql();
+			
+			String sqlQ = "select * from project";
+			
+			pStmt = conn.createStatement();
+			rs = pStmt.executeQuery(sqlQ);
+			
+			while(rs.next()){
+				
+				projectList.add(new ProjectForm(rs.getString("proid"), rs.getString("proname"), rs.getString("cusid"), rs.getString("username")));
+				
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return projectList;
+		
+	}
 	
 	
 }

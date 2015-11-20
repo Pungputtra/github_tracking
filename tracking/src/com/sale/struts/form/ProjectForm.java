@@ -32,6 +32,8 @@ public class ProjectForm extends ActionForm {
 	
 	private String cusname;
 	
+	private String username;
+	
 	
 	private String submit,search;
 	
@@ -48,9 +50,11 @@ public class ProjectForm extends ActionForm {
 		this.cusname = cusname;
 		
 		
+		
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
@@ -143,5 +147,11 @@ public class ProjectForm extends ActionForm {
 	}
 	public void setCusname(String cusname) {
 		this.cusname = cusname;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

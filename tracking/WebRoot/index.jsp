@@ -1,75 +1,71 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="com.sale.struts.form.CustomerForm"%>
-<%@page import="com.sale.struts.data.DBIndex"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page import="com.sale.struts.data.DBIndex"%>
+<%@ page import="com.sale.struts.form.CustomerForm"%>
+<%@ page import="com.sale.struts.form.DetailForm"%>
+<%@ page import="com.sale.struts.form.ProjectForm"%>
+
 <html>
   <head>
-    <base href="<%=basePath%>">
     
     <title>My JSP 'index.jsp' starting page</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->	
 	
-	<link rel="stylesheet" href="css/styles.css" type="text/css"></link>
+		<link rel="stylesheet" href="css/styles.css" type="text/css"></link>
 	
 		<link rel="stylesheet" href="css/bootstrap.css" type="text/css"></link>
 		<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"></link>
+		
 		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
- <link rel="stylesheet" href="css/jquery.dataTables.min.css" type="text/css"></link>
- <script type="text/javascript" src="js/jquery.dataTables.min.js"></script></head>
- <body>
- 		<%@ include file="menu.jsp"%>
- 		
- 		<br><br><br>
- 		<div class="row">
-		  <div class="col-md-4">
-		  <!-- Navs -->
- 			<div class="container">
-                    <div class="row">
-                        <div class="col-md-4 ">
-	  						<ul class="nav nav-pills nav-stacked">
-					  			<li role="presentation"><a href="index.jsp">Home&nbsp;&nbsp;<span class="glyphicon glyphicon-home"><br></span></a></li>
-					  			<li role="presentation"><a href="customer.jsp">Customer&nbsp;&nbsp;<span class="glyphicon glyphicon-user"><br></span></a></li>
-					  			<li role="presentation"><a href="employee.jsp">Employee</a></li>
-					  			<li role="presentation"><a href="project.do">Project</a></li>
-					  			<li role="presentation"><a href="detail.do">Detail</a></li>
-					  			<li role="presentation"><a href="status.jsp">Status</a></li>
-							</ul>
-						</div>
-    				</div>
-    		</div>
-    		<!-- End Navs --></div>
-		  <div class="col-md-4">
-		  		<div class="container">
-					<div class="row">
-								<a class="btn btn-primary " href="customer.jsp"style="width:128px;height:128px;"> Customer <span class="glyphicon glyphicon-user"><br></span></a>&nbsp;&nbsp;
-								<a class="btn btn-success " href="detail.jsp"style="width:128px;height:128px;">Detail <span class="glyphicon glyphicon-user"><br></span></a>&nbsp;&nbsp;
-								<a class="btn btn-info " href="project.jsp"style="width:128px;height:128px;"> Projicet <span class="glyphicon glyphicon-book"><br></span></a>&nbsp;&nbsp;
-					</div>
-				</div>
-		</div><br><br></div>
-		</div>
 		
- 			
- 			
- 			
- 			
- 			
- 			<div class="col-md-12">
-				
-				<!-- Table Show List -->
+ 		
+ 		<link rel="stylesheet" href="css/jquery.dataTables.min.css" type="text/css"></link>
+ 		
+ 		<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+ 		
+   </head>
+   
+   
+   <body>
+   
+   		<style>	
+   		
+   			body{background-color : #cfe2f3;}
+   	
+   		</style>
+   
+   		<%
+			String sessionUser = null;
+			if(session.getAttribute("username") != null)
+			sessionUser = session.getAttribute("username").toString();
+		%>
+   
+   
+   		<nav class="navbar navbar-inverse navbar-static-top">
+   		
+	   		<a class="navbar-brand" href="index.jsp">Sales Tracking</a>
+	   		
+	   		<ul class="nav navbar-nav">
+		        <li class="active"><a href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
+		        <li><a href="customer.jsp">Customer</a></li>
+		        <li><a href="employee.jsp">Employee</a></li>
+		        <li><a href="project.do">Project</a></li>
+		        <li><a href="detail.do">Detail</a></li>
+		        <li><a href="status.jsp">Status</a></li>
+		        <li><a href="report.jsp">Report</a></li>
+  			</ul>
+  				
+  				<p class="navbar-text navbar-right"> <%=sessionUser %>&nbsp;&nbsp;&nbsp;<a href="logout.do" class="navbar-link">Logout</a></p>
+  			
+		</nav>
+   
+   				
+   				<br>
+   				
+   				<h3>CUSTOMER</h3>
+   				
+   				<!-- Table Show List -->
+ 				<div class="col-md-12">
 				
 					<table id="customertable" class="table table-bordered display">
 						
@@ -87,20 +83,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<th class="text-center">Fax</th>
 							</tr>
 						</thead>
+						
 						<tbody>
-								<% ListIterator<?> indexDetail = null;
+								<% ListIterator<?> indexCustomer = null;
 									DBIndex dbindex = new DBIndex();
-									indexDetail = dbindex.select_customer().listIterator();
+									indexCustomer = dbindex.select_customer().listIterator();
 									
 									
-									
-									
-									while(indexDetail.hasNext())
+									while(indexCustomer.hasNext())
 									{
-										CustomerForm cmform = (CustomerForm) indexDetail.next();
+										CustomerForm cmform = (CustomerForm) indexCustomer.next();
 								%>
 								
-						
 							<tr>
 								<td class="active"><%=cmform.getCusid()%></td>
 								<td class="active"><%=cmform.getCompaname_en()%></td>
@@ -111,27 +105,124 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<td class="active"><%=cmform.getAddress()%></td>
 								<td class="active"><%=cmform.getTel08()%></td>
 								<td class="active"><%=cmform.getTel02()%></td>
-								<td class="active"><%=cmform.getFax()%></td>
-																
+								<td class="active"><%=cmform.getFax()%></td>								
 							</tr>
-						
 						
 								<%
 									}
 								%>
-							</tbody>
+								
+						</tbody>
 					</table>
 					
-					<!-- End Table Show List -->
-					
 				</div>
+				<!-- End Table Customer -->
+				
+				
+				
+				<h3>DETAIL</h3>
+				<!-- Table Detail -->
+				<div class="col-md-12">
+				
+					<table id="detailtable" class="table table-bordered display">
+						
+						<thead>
+							<tr class="active">
+								<th class="text-center">ID</th>
+								<th class="text-center">cusid</th>
+								<th class="text-center">proid</th>
+								<th class="text-center">statusid</th>
+								<th class="text-center">remark</th>
+								<th class="text-center">date</th>
+								<th class="text-center">username</th>
+								
+							</tr>
+						</thead>
+						
+						<tbody>
+								<% ListIterator<?> indexDetail = null;
+									
+									indexDetail = dbindex.select_detail().listIterator();
 									
 									
+									while(indexDetail.hasNext())
+									{
+										DetailForm dtform = (DetailForm) indexDetail.next();
+								%>
+								
+							<tr>
+								<td class="active"><%=dtform.getId()%></td>
+								<td class="active"><%=dtform.getCusid()%></td>
+								<td class="active"><%=dtform.getProid()%></td>
+								<td class="active"><%=dtform.getStatusid()%></td>
+								<td class="active"><%=dtform.getRemark()%></td>
+								<td class="active"><%=dtform.getDate()%></td>
+								<td class="active"><%=dtform.getUsername()%></td>								
+							</tr>
+						
+								<%
+									}
+								%>
+								
+						</tbody>
+					</table>
+				</div>
+				<!-- End Table Detail -->
+				
+				
+				
+				<h3>DETAIL</h3>
+				<!-- Table Project -->
+				<div class="col-md-12">
+				
+					<table id="projecttable" class="table table-bordered display">
+						
+						<thead>
+							<tr class="active">
+								<th class="text-center">proid</th>
+								<th class="text-center">proname</th>
+								<th class="text-center">cusid</th>
+								<th class="text-center">username</th>
+								
+							</tr>
+						</thead>
+						
+						<tbody>
+								<% ListIterator<?> indexProject = null;
+									
+									indexProject = dbindex.select_project().listIterator();
+
+
+									while(indexProject.hasNext())
+									{
+										ProjectForm pjform = (ProjectForm) indexProject.next();
+								%>
+						
+							<tr>
+								<td class="active"><%=pjform.getProid()%></td>
+								<td class="active"><%=pjform.getProname()%></td>
+								<td class="active"><%=pjform.getCusid()%></td>	
+								<td class="active"><%=pjform.getUsername()%></td>							
+							</tr>
+						
+								<%
+									}
+								%>
+								
+							</tbody>
+					</table>
+				</div>
+				<!-- End Table Project -->
+																
  </body>
- <script type="text/javascript">
- $(document).ready(function() {
-    $('#customertable').DataTable();
-} );
- </script>
+ 
+	 <script type="text/javascript">
+	 $(document).ready(function() {
+	    $('#customertable').DataTable();
+	    $('#detailtable').DataTable();
+	    $('#projecttable').DataTable();
+	 } );
+	 </script>
+ 
  </html>
  

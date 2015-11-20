@@ -82,6 +82,27 @@ public class DetailForm extends ActionForm {
 		this.empname = empname;
 	}
 
+	public DetailForm(String id, 
+			String cusid,
+			String proid,
+			String statusid,
+			String remark,
+			String date,
+			String username) {
+		
+		
+			this.id = id;
+			this.cusid = cusid;
+			this.proid = proid;
+			this.cusname = cusname;
+			this.statusid = statusid;
+			this.remark = remark;
+			this.date = date;
+			this.username = username;
+			
+			
+		// TODO Auto-generated constructor stub
+	}
 	/** 
 	 * Method validate
 	 * @param mapping
