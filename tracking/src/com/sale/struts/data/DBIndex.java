@@ -22,7 +22,7 @@ public class DBIndex {
 	ResultSet rs = null;
 	
 	public List select_customer(){
-		
+	
 		List customerList = new ArrayList();
 		
 		try {
@@ -35,7 +35,7 @@ public class DBIndex {
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
-				
+			
 				customerList.add(new CustomerForm(rs.getString("cusid"), rs.getString("companame_en"), rs.getString("companame_th"), rs.getString("cusname"), rs.getString("position"), rs.getString("mail"), rs.getString("address"), rs.getString("tel08"), rs.getString("tel02"), rs.getString("fax")));
 				
 			}
@@ -67,7 +67,7 @@ public class DBIndex {
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
-				
+			
 				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusid"), rs.getString("proid"), rs.getString("statusid"), rs.getString("remark"), rs.getString("date"), rs.getString("username")));
 				
 			}
@@ -86,7 +86,7 @@ public class DBIndex {
 	
 	
 	public List select_project(){
-		
+	
 		List projectList = new ArrayList();
 		
 		try {
@@ -115,6 +115,5 @@ public class DBIndex {
 		return projectList;
 		
 	}
-	
 	
 }
