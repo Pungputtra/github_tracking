@@ -34,7 +34,7 @@
 					<li class="active"><a href="project.do">Project</a></li>
 					<li><a href="detail.do">Detail</a></li>
 					<li><a href="status.jsp">Status</a></li>
-					<li><a href="report.jsp">Report</a></li>
+					<li><a href="reportiframe.jsp">Report</a></li>
 				</ul>
   			</div>
   			

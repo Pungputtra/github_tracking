@@ -34,6 +34,10 @@ public class ProjectForm extends ActionForm {
 	
 	private String username;
 	
+	private String companame_en;
+	
+	private String empname;
+	
 	
 	private String submit,search;
 	
@@ -51,11 +55,22 @@ public class ProjectForm extends ActionForm {
 		
 		
 		
+		
 		// TODO Auto-generated constructor stub
 	}
 
 	
 	
+	public ProjectForm(String proid, String proname, String companame_en, String cusname, String empname) {
+		this.proid = proid;
+		this.proname = proname;
+		this.companame_en = companame_en;
+		this.cusname = cusname;
+		this.empname = empname;
+		
+		
+		// TODO Auto-generated constructor stub
+	}
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
 		// TODO Auto-generated method stub
@@ -153,5 +168,17 @@ public class ProjectForm extends ActionForm {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getCompaname_en() {
+		return companame_en;
+	}
+	public void setCompaname_en(String companameEn) {
+		companame_en = companameEn;
+	}
+	public String getEmpname() {
+		return empname;
+	}
+	public void setEmpname(String empname) {
+		this.empname = empname;
 	}
 }

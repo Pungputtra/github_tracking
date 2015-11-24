@@ -40,7 +40,7 @@
 						<li><a href="status.jsp">Status</a></li>
 						
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="report.jsp">Report
+							<a class="dropdown-toggle" data-toggle="dropdown" href="reportiframe.jsp">Report
 								<span class="caret"></span>
 							</a>
 							

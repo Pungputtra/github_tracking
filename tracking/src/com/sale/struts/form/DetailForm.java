@@ -83,22 +83,21 @@ public class DetailForm extends ActionForm {
 	}
 
 	public DetailForm(String id, 
-			String cusid,
-			String proid,
-			String statusid,
+			String cusname,
+			String proname,
+			String statusname,
 			String remark,
 			String date,
-			String username) {
+			String empname) {
 		
 		
 			this.id = id;
-			this.cusid = cusid;
-			this.proid = proid;
 			this.cusname = cusname;
-			this.statusid = statusid;
+			this.proname = proname;
+			this.statusname = statusname;
 			this.remark = remark;
 			this.date = date;
-			this.username = username;
+			this.empname = empname;
 			
 			
 		// TODO Auto-generated constructor stub

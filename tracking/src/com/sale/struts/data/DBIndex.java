@@ -61,14 +61,21 @@ public class DBIndex {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "select * from detail";
+			String sqlQ = "SELECT detail.id, customer.cusname, project.proname, status.statusname, detail.remark, detail.date, employee.empname ";
+				sqlQ += "FROM customer ";
+				sqlQ += "Inner Join detail ON customer.cusid = detail.cusid ";
+				sqlQ += "Inner Join project ON project.proid = detail.proid ";
+				sqlQ += "Inner Join status ON status.statusid = detail.statusid ";
+				sqlQ += "Inner Join employee ON employee.username = detail.username ";
+				sqlQ += "ORDER BY ";
+				sqlQ += "detail.date DESC";
 			
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
 			
-				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusid"), rs.getString("proid"), rs.getString("statusid"), rs.getString("remark"), rs.getString("date"), rs.getString("username")));
+				detailList.add(new DetailForm(rs.getString("id"), rs.getString("cusname"), rs.getString("proname"), rs.getString("statusname"), rs.getString("remark"), rs.getString("date"), rs.getString("empname")));
 				
 			}
 			
@@ -93,14 +100,18 @@ public class DBIndex {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "select * from project";
+			String sqlQ = "SELECT project.proid, project.proname, customer.companame_en, customer.cusname, employee.empname ";
+				sqlQ += "FROM customer ";
+				sqlQ += "Inner Join detail ON customer.cusid = detail.cusid ";
+				sqlQ += "Inner Join project ON project.proid = detail.proid ";
+				sqlQ += "Inner Join employee ON employee.username = detail.username";
 			
 			pStmt = conn.createStatement();
 			rs = pStmt.executeQuery(sqlQ);
 			
 			while(rs.next()){
 				
-				projectList.add(new ProjectForm(rs.getString("proid"), rs.getString("proname"), rs.getString("cusid"), rs.getString("username")));
+				projectList.add(new ProjectForm(rs.getString("proid"), rs.getString("proname"), rs.getString("companame_en"), rs.getString("cusname"), rs.getString("empname")));
 				
 			}
 			

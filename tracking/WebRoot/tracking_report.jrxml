@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tracking_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1f9664ba-795d-43f4-aba0-beaf5e63cda6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="username" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+detail.id,
+customer.companame_en,
+customer.companame_th,
+customer.cusname,
+customer.`position`,
+customer.mail,
+customer.address,
+customer.tel08,
+customer.tel02,
+customer.fax,
+project.proid,
+project.proname,
+status.statusid,
+status.statusname,
+detail.date,
+employee.username,
+employee.empname
+FROM
+customer
+Inner Join detail ON customer.cusid = detail.cusid
+Inner Join project ON project.proid = detail.proid
+Inner Join status ON status.statusid = detail.statusid
+Inner Join employee ON employee.username = detail.username
+where employee.username like $P{username}
+order by project.proid]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="companame_en" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="companame_th" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cusname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="position" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="address" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tel08" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tel02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fax" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statusid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statusname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="username" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="empname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="project">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="0" y="0" width="77" height="20" uuid="cdd80a81-79ec-4bd2-b11d-157260d8dc5f"/>
+					<textElement>
+						<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Project ID"+$F{proid}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="198" y="0" width="163" height="30" uuid="f4b3977e-f4b2-439a-955f-f00000b30339"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Tracking Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="52" y="0" width="89" height="20" uuid="f2770a67-da66-4bcf-9174-fa0d304c2c88"/>
+				<textElement>
+					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Project Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="100" height="20" uuid="6f51f4a5-77b8-4ec8-9afd-9e40a1607b4a"/>
+				<textElement>
+					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Company Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="0" width="74" height="20" uuid="c0c9c095-fe22-46b2-b189-472982698fe0"/>
+				<textElement>
+					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="0" width="84" height="20" uuid="f53d4a36-5b4b-4682-9181-cd11187c8759"/>
+				<textElement>
+					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="0" width="96" height="20" uuid="b95b3ef6-b2a5-44de-9738-c8f56b3ececd"/>
+				<textElement>
+					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Employee Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="0" width="89" height="20" uuid="c761c2aa-867e-4a8b-81f3-7efaf7b93545"/>
+				<textElement>
+					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Date/Time]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="52" y="0" width="89" height="20" uuid="2d1bb613-8741-4fc2-a88e-a77beac76f6f"/>
+				<textElement>
+					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="100" height="20" uuid="7c20a5ac-7bcd-4d5b-b078-2e48bef792fe"/>
+				<textElement>
+					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{companame_en}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="0" width="74" height="20" uuid="95ab94e0-aad8-4f01-a525-29948b50a227"/>
+				<textElement>
+					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cusname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="0" width="84" height="20" uuid="b995fd82-1039-447f-95dd-af75c06bfd8f"/>
+				<textElement>
+					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{statusname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="0" width="67" height="20" uuid="9ad04012-ffe8-49d4-9adb-a2197a5ab840"/>
+				<textElement>
+					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="0" width="89" height="20" uuid="ffd3283b-638c-4a24-9052-fff0ae6e543e"/>
+				<textElement>
+					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

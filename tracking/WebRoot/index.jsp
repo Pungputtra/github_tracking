@@ -58,7 +58,7 @@
 			        <li><a href="project.do">Project</a></li>
 			        <li><a href="detail.do">Detail</a></li>
 			        <li><a href="status.jsp">Status</a></li>
-			        <li><a href="report.jsp">Report</a></li>
+			        <li><a href="reportiframe.jsp">Report</a></li>
 	  			</ul>
 	  			
 	  			
@@ -146,12 +146,12 @@
 					<thead>
 						<tr class="active">
 							<th class="text-center">ID</th>
-							<th class="text-center">cusid</th>
-							<th class="text-center">proid</th>
-							<th class="text-center">statusid</th>
-							<th class="text-center">remark</th>
-							<th class="text-center">date</th>
-							<th class="text-center">username</th>
+							<th class="text-center">Customer Name</th>
+							<th class="text-center">Project Name</th>
+							<th class="text-center">Status Name</th>
+							<th class="text-center">Remark</th>
+							<th class="text-center">Date</th>
+							<th class="text-center">Employee Name</th>
 						</tr>
 					</thead>
 					
@@ -168,12 +168,12 @@
 							
 						<tr>
 							<td class="active"><%=dtform.getId()%></td>
-							<td class="active"><%=dtform.getCusid()%></td>
-							<td class="active"><%=dtform.getProid()%></td>
-							<td class="active"><%=dtform.getStatusid()%></td>
+							<td class="active"><%=dtform.getCusname()%></td>
+							<td class="active"><%=dtform.getProname()%></td>
+							<td class="active"><%=dtform.getStatusname()%></td>
 							<td class="active"><%=dtform.getRemark()%></td>
 							<td class="active"><%=dtform.getDate()%></td>
-							<td class="active"><%=dtform.getUsername()%></td>							
+							<td class="active"><%=dtform.getEmpname()%></td>							
 						</tr>
 						
 							<%
@@ -188,7 +188,7 @@
 		
 		
 		
-		<h3>DETAIL</h3>
+		<h3>PROJECT</h3>
 		<!-- Table Project -->
 			<div class="col-md-12">
 			
@@ -196,10 +196,11 @@
 				
 					<thead>
 						<tr class="active">
-							<th class="text-center">proid</th>
-							<th class="text-center">proname</th>
-							<th class="text-center">cusid</th>
-							<th class="text-center">username</th>
+							<th class="text-center">Project ID</th>
+							<th class="text-center">Project Name</th>
+							<th class="text-center">Company Name</th>
+							<th class="text-center">Customer Name</th>
+							<th class="text-center">Employee Name</th>
 						</tr>
 					</thead>
 					
@@ -217,8 +218,9 @@
 						<tr>
 							<td class="active"><%=pjform.getProid()%></td>
 							<td class="active"><%=pjform.getProname()%></td>
-							<td class="active"><%=pjform.getCusid()%></td>
-							<td class="active"><%=pjform.getUsername()%></td>
+							<td class="active"><%=pjform.getCompaname_en()%></td>
+							<td class="active"><%=pjform.getCusname()%></td>
+							<td class="active"><%=pjform.getEmpname()%></td>
 						</tr>
 						
 							<%
