@@ -25,7 +25,7 @@
 		<div class="container-fluid">
 		
 			<div class="row">
-  				<div class="col-md-3">
+  				<div class="col-md-2">
   					<ul class="nav nav-pills nav-stacked">
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="customer.jsp">Customer</a></li>
@@ -40,7 +40,7 @@
 							</a>
 							
 							<ul class="dropdown-menu">
-						    	<li><a href="#">report1</a></li>
+						    	<li><a href="reportiframe.jsp">report1</a></li>
 						    	<li><a href="#">report2</a></li>
 						    	<li><a href="#">report3</a></li>
 						    </ul>
@@ -58,10 +58,14 @@
 			
 				<div class="container">
 				
+					<div class="col-md-4">
+							<button type ="submit" class="btn btn-default" value="PRINT" name="print">
+							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+							PRINT</button>
+						</div>
 					
 					
-					
-					<iframe src="http://localhost:8080/tracking/reportpdf.jsp" width="800" height="500">
+					<iframe src="report.jsp" width="1000" height="500">
 					  <p>Your browser does not support iframes.</p>
 					</iframe>
 					

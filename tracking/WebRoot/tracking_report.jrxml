@@ -3,36 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="username" class="java.lang.String">
+	<parameter name="prm1" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT
-detail.id,
-customer.companame_en,
-customer.companame_th,
-customer.cusname,
-customer.`position`,
-customer.mail,
-customer.address,
-customer.tel08,
-customer.tel02,
-customer.fax,
-project.proid,
-project.proname,
-status.statusid,
-status.statusname,
-detail.date,
-employee.username,
-employee.empname
-FROM
-customer
-Inner Join detail ON customer.cusid = detail.cusid
-Inner Join project ON project.proid = detail.proid
-Inner Join status ON status.statusid = detail.statusid
-Inner Join employee ON employee.username = detail.username
-where employee.username like $P{username}
-order by project.proid]]>
+		<![CDATA[$P!{prm1}]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -90,12 +65,30 @@ order by project.proid]]>
 		<groupHeader>
 			<band height="20">
 				<textField>
-					<reportElement x="0" y="0" width="77" height="20" uuid="cdd80a81-79ec-4bd2-b11d-157260d8dc5f"/>
+					<reportElement x="-25" y="0" width="77" height="20" uuid="cdd80a81-79ec-4bd2-b11d-157260d8dc5f"/>
 					<textElement>
 						<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Project ID"+$F{proid}]]></textFieldExpression>
 				</textField>
+				<line>
+					<reportElement x="139" y="0" width="1" height="20" uuid="f5b1b9db-9c72-495b-84e1-2f43ba7a5ff6"/>
+				</line>
+				<line>
+					<reportElement x="242" y="0" width="1" height="20" uuid="8e5e2e46-87d0-4712-896c-135a036312e1"/>
+				</line>
+				<line>
+					<reportElement x="313" y="0" width="1" height="20" uuid="5e4816e4-cb55-407b-985e-6e0a2ca6badb"/>
+				</line>
+				<line>
+					<reportElement x="398" y="0" width="1" height="20" uuid="0493316e-9bcf-4356-aba4-b89f3c440342"/>
+				</line>
+				<line>
+					<reportElement x="488" y="0" width="1" height="20" uuid="7373eeff-29e4-4103-bcfc-97fce50d1246"/>
+				</line>
+				<line>
+					<reportElement x="50" y="0" width="1" height="20" uuid="3606de66-dd87-4d11-9c78-edf96b8b0836"/>
+				</line>
 			</band>
 		</groupHeader>
 	</group>
@@ -114,58 +107,83 @@ order by project.proid]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="34" width="555" height="1" uuid="13a32dc9-6bfb-4df9-b0f2-7554fe41f6b0"/>
+			</line>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="36" splitType="Stretch">
 			<staticText>
-				<reportElement x="52" y="0" width="89" height="20" uuid="f2770a67-da66-4bcf-9174-fa0d304c2c88"/>
-				<textElement>
-					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				<reportElement x="51" y="0" width="89" height="20" uuid="f2770a67-da66-4bcf-9174-fa0d304c2c88"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[Project Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="141" y="0" width="100" height="20" uuid="6f51f4a5-77b8-4ec8-9afd-9e40a1607b4a"/>
-				<textElement>
-					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[Company Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="241" y="0" width="74" height="20" uuid="c0c9c095-fe22-46b2-b189-472982698fe0"/>
-				<textElement>
-					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[Customer Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="315" y="0" width="84" height="20" uuid="f53d4a36-5b4b-4682-9181-cd11187c8759"/>
-				<textElement>
-					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[Status]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="488" y="0" width="96" height="20" uuid="b95b3ef6-b2a5-44de-9738-c8f56b3ececd"/>
-				<textElement>
-					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[Employee Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="399" y="0" width="89" height="20" uuid="c761c2aa-867e-4a8b-81f3-7efaf7b93545"/>
-				<textElement>
-					<font size="12" isBold="true" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false" pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[Date/Time]]></text>
 			</staticText>
+			<line>
+				<reportElement x="139" y="0" width="1" height="36" uuid="6f888e62-fc5f-4b97-8bc9-80e1a1f5336b"/>
+			</line>
+			<line>
+				<reportElement x="242" y="0" width="1" height="36" uuid="3af19268-9094-4903-89dd-f9af5c555dc6"/>
+			</line>
+			<line>
+				<reportElement x="313" y="0" width="1" height="36" uuid="c1276951-df90-4ca9-87e1-ccbb8658d575"/>
+			</line>
+			<line>
+				<reportElement x="398" y="0" width="1" height="36" uuid="2e72b6d6-6a56-4b11-9616-fe23ee00f9eb"/>
+			</line>
+			<line>
+				<reportElement x="488" y="0" width="1" height="36" uuid="c453246f-132d-4170-b90e-2d19f2425a3c"/>
+			</line>
+			<line>
+				<reportElement x="50" y="0" width="1" height="36" uuid="30bde2cf-bd8b-4938-bd69-11a35a98abd9"/>
+			</line>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="ae7cb5eb-2061-45a7-bd83-b584324e5d50"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="52" y="0" width="89" height="20" uuid="2d1bb613-8741-4fc2-a88e-a77beac76f6f"/>
+				<reportElement x="51" y="0" width="89" height="20" uuid="2d1bb613-8741-4fc2-a88e-a77beac76f6f"/>
 				<textElement>
 					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
@@ -193,23 +211,41 @@ order by project.proid]]>
 				<textFieldExpression><![CDATA[$F{statusname}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="488" y="0" width="67" height="20" uuid="9ad04012-ffe8-49d4-9adb-a2197a5ab840"/>
+				<reportElement x="489" y="0" width="67" height="20" uuid="9ad04012-ffe8-49d4-9adb-a2197a5ab840"/>
 				<textElement>
 					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{empname}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="399" y="0" width="89" height="20" uuid="ffd3283b-638c-4a24-9052-fff0ae6e543e"/>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="400" y="0" width="89" height="20" uuid="ffd3283b-638c-4a24-9052-fff0ae6e543e"/>
 				<textElement>
 					<font pdfFontName="angsd___.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="50" y="0" width="1" height="20" uuid="fdbd78c3-047e-4e1f-84b8-3f2fbfd57bbd"/>
+			</line>
+			<line>
+				<reportElement x="139" y="0" width="1" height="20" uuid="d3a989c7-9cdc-486a-8a91-b0d47b81708c"/>
+			</line>
+			<line>
+				<reportElement x="242" y="0" width="1" height="20" uuid="bf27cd54-55b3-4208-a56f-cfef9f9608d8"/>
+			</line>
+			<line>
+				<reportElement x="313" y="0" width="1" height="20" uuid="00e907fd-512c-445f-b49b-85e1bc165e6a"/>
+			</line>
+			<line>
+				<reportElement x="398" y="0" width="1" height="20" uuid="cd396806-6e61-4c1b-a585-1474bafa5242"/>
+			</line>
+			<line>
+				<reportElement x="488" y="0" width="1" height="20" uuid="2ca3ae19-283d-429b-bf07-512253e283d7"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="43" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

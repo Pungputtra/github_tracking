@@ -58,7 +58,18 @@
 			        <li><a href="project.do">Project</a></li>
 			        <li><a href="detail.do">Detail</a></li>
 			        <li><a href="status.jsp">Status</a></li>
-			        <li><a href="reportiframe.jsp">Report</a></li>
+			        
+			        <li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="reportiframe.jsp">Report
+							<span class="caret"></span>
+						</a>
+							
+						<ul class="dropdown-menu">
+					    	<li><a href="reportiframe.jsp">report1</a></li>
+					    	<li><a href="#">report2</a></li>
+					    	<li><a href="#">report3</a></li>
+						</ul>
+					</li>
 	  			</ul>
 	  			
 	  			
@@ -238,7 +249,11 @@
 	 <script type="text/javascript">
 	 $(document).ready(function() {
 	    $('#customertable').DataTable();
-	    $('#detailtable').DataTable();
+	    $('#detailtable').DataTable(
+	    {
+        	"order": [[ 5, "desc" ]]
+    	}
+	    );
 	    $('#projecttable').DataTable();
 	 } );
 	 </script>
