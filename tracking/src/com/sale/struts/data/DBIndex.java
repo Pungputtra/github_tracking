@@ -61,7 +61,7 @@ public class DBIndex {
 			
 			conn = agent.getConnectMYSql();
 			
-			String sqlQ = "SELECT detail.id, customer.cusname, project.proname, status.statusname, detail.remark, DATE_FORMAT(detail.date,'%b %d %Y %h:%i %p'), employee.empname ";
+			String sqlQ = "SELECT detail.id, customer.cusname, project.proname, status.statusname, detail.remark, DATE_FORMAT(detail.date,'%b %d %Y %h:%i %p')as date, employee.empname ";
 				sqlQ += "FROM customer ";
 				sqlQ += "Inner Join detail ON customer.cusid = detail.cusid ";
 				sqlQ += "Inner Join project ON project.proid = detail.proid ";
